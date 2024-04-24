@@ -11,22 +11,21 @@
     <title>Home</title>
 </head>
 <body class="w3-light-grey">
-<div class="w3-container w3-center w3-row">
-    <div class="w3-col s4" style="width: 80%">
+<div class="w3-container w3-center" id="contenedorHeader">
+    <div id="header">
         <?php
         include "header.html";
         ?>
     </div>
-    <div class="w3-col s4" style="width: 20%">
+    <div id="user">
         acá va el form o el nombre de usuario
     </div>
 </div>
 
 <div class="w3-container w3-center w3-margin">
     <form action="#" method="get">
-        <input type="text" name="buscador" id="buscador" placeholder="Ingrese nombre, tipo o numero de pokémon"
-               style="width: 50rem">
-        <input type="submit" name="buscar" id="buscar" value="¿Quien es ese pokemón?">
+        <input type="text" name="buscador" id="buscador" placeholder="Ingrese nombre, tipo o numero de pokémon">
+        <input type="submit" name="buscar" id="buscar" value="¿Quien es ese pokemon?">
     </form>
 </div>
 <div class="w3-margin">
@@ -41,10 +40,10 @@
         </thead>
         <tbody>
         <tr>
-            <td><img src="#" alt="Imagen 1" style="width:50px;height:50px;"></td>
-            <td><a href="paginaDeVisualizacion.php">Tipo 1</a></td>
+            <td><img src="#" alt="Imagen 1" class="imagenTabla"></td>
+            <td>Tipo 1</td>
             <td>123</td>
-            <td>Nombre 1</td>
+            <td><a href="paginaDeVisualizacion.php">Nombre 1</a></td>
         </tr>
     </table>
 </div>

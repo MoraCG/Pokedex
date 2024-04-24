@@ -3,3 +3,37 @@ input[type="text"], input[type="submit"] {
     border-radius: 50px;
     border: 1px solid #ccc;
 }
+#contenedorHeader{
+    display: flex;
+    flex-direction: row;
+}
+#header{
+    width: 80%;
+}
+#user{
+    width: 20%;
+}
+
+#buscador{
+    width: 50rem;
+}
+
+.imagenTabla{
+    width: 3.125rem;
+}
+
+#contenedorInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#tipoNombre{
+    display: flex;
+}
+
+#imgTipo{
+    width: 2rem;
+    height: 2rem;
+    align-self: center;
+}

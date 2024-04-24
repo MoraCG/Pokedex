@@ -15,13 +15,13 @@
 include "header.html";
 ?>
 <!--todo esto debería meterse en un php para ser rellenado según lo clickeado-->
-<section class="w3-center w3-row">
-    <div class="w3-margin w3-col s3">
-        <img src="#" alt="Imagen Pokémon seleccionado" sizes="5rem">
+<section class="w3-center" id="contenedorInfo">
+    <div class="w3-margin" id="imagenInfo">
+        <img src="#" alt="Imagen Pokémon seleccionado" >
     </div>
-    <div class="w3-margin w3-col s7">
-        <div>
-            <img src="#" alt="Tipo">
+    <div class="w3-margin" id="info">
+        <div id="tipoNombre">
+            <img src="#" alt="Tipo" id="imgTipo">
             <h2>| Nombre del Pokémon</h2>
         </div>
         <div>
