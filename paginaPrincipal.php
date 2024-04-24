@@ -48,6 +48,7 @@
     </table>
 </div>
 <?php
+include "ConsultarBdPokemon.php";
 include "footer.html";
 ?>
 </body>
