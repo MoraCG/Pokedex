@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="style/estilos.css">
+    <link rel="stylesheet" href="style/estilosVistas.css">
     <link rel="icon" href="/img/pokebolaLogo.png" type="image/png">
     <title>Home</title>
 </head>
@@ -25,7 +25,7 @@
 <div class="w3-container w3-center w3-margin">
     <form action="#" method="get">
         <input type="text" name="buscador" id="buscador" placeholder="Ingrese nombre, tipo o numero de pokémon">
-        <input type="submit" name="buscar" id="buscar" value="¿Quien es ese pokemon?">
+        <input type="submit" name="buscar" id="buscar" value="¿Quién es ese pokemon?">
     </form>
 </div>
 <div class="w3-margin">
