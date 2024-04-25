@@ -20,7 +20,13 @@ function buscarPokemon($buscador, $conn)
 
     // Preparar la consulta
 
-    $sql = "SELECT * FROM pokemon WHERE nombre LIKE '%$buscador%'";
+    $sql = "SELECT pokemon.*, GROUP_CONCAT(tipo.nombre SEPARATOR ',') AS tipos 
+FROM pokemon 
+INNER JOIN pokemon_tipo ON pokemon.id = pokemon_tipo.pokemon_id 
+INNER JOIN tipo ON pokemon_tipo.tipo_id = tipo.id 
+WHERE pokemon.nombre LIKE '%$buscador%' 
+GROUP BY pokemon.id";
+
     $result = $conn->query($sql);
 // Verificar si se encontraron resultados
     if ($result->num_rows > 0) {
@@ -39,7 +45,7 @@ function buscarPokemon($buscador, $conn)
         echo "<tbody>";
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
-            echo "<td><img src='imagenes/" . $row["imagen"] . "' alt='' class='imagenTabla'></td>";
+            echo "<td><img src='/imagenes/pokemon/" . $row["imagen"] . "' alt='imagen.jpg' class='imagenTabla'></td>";
             echo "<td>"; // Iniciar una nueva celda para los tipos
             $tipos = explode(',', $row["tipo"]); // Dividir los tipos por coma
             foreach ($tipos as $tipo) {
