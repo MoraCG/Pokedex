@@ -21,12 +21,12 @@ function buscarPokemon($buscador, $conn)
     // Preparar la consulta
 
     $sql = "SELECT pokemon.*, GROUP_CONCAT(tipo.nombre SEPARATOR ',') AS tipos 
-FROM pokemon 
-INNER JOIN pokemon_tipo ON pokemon.id = pokemon_tipo.pokemon_id 
-INNER JOIN tipo ON pokemon_tipo.tipo_id = tipo.id 
-WHERE pokemon.nombre LIKE '%$buscador%' 
-GROUP BY pokemon.id";
-
+        FROM pokemon 
+        INNER JOIN pokemon_tipo ON pokemon.id = pokemon_tipo.pokemon_id 
+        INNER JOIN tipo ON pokemon_tipo.tipo_id = tipo.id 
+        WHERE pokemon.nombre LIKE '%$buscador%' 
+        GROUP BY pokemon.id 
+        LIMIT 151";
     $result = $conn->query($sql);
 // Verificar si se encontraron resultados
     if ($result->num_rows > 0) {
@@ -46,11 +46,8 @@ GROUP BY pokemon.id";
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
             echo "<td><img src='/imagenes/pokemon/" . $row["imagen"] . "' alt='imagen.jpg' class='imagenTabla'></td>";
-            echo "<td>"; // Iniciar una nueva celda para los tipos
-            $tipos = explode(',', $row["tipo"]); // Dividir los tipos por coma
-            foreach ($tipos as $tipo) {
-                echo $tipo . "<br>"; // Mostrar cada tipo con un salto de línea
-            }
+
+            echo "<td>" . $row["tipos"] . "</td>";
             echo "</td>"; // Finalizar la celda para los tipos
             echo "<td>" . $row["numero"] . "</td>";
             echo "<td><a href='paginaDeVisualizacion.php?id=" . $row["id"] . "'>" . $row["nombre"] . "</a></td>";
