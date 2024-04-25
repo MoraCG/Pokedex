@@ -35,8 +35,11 @@ function buscarPokemon($buscador, $conn)
         echo "</tr>";
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
-            echo "<td><img src='#' alt='Imagen " . $row["id"] . "' class='imagenTabla'></td>";
-            echo "<td>" . $row["tipo"] . "</td>";
+            echo "<td><img src='imagenes/" . $row["imagen"] . "' alt='Imagen " . $row["imagen"] . "' class='imagenTabla'></td>";
+            $tipos = explode(',', $row["tipo"]); // Dividir los tipos por coma
+            foreach ($tipos as $tipo) {
+                echo $tipo;
+            }
             echo "<td>" . $row["numero"] . "</td>";
             echo "<td><a href='paginaDeVisualizacion.php?id=" . $row["id"] . "'>" . $row["nombre"] . "</a></td>";
             echo "</tr>";
