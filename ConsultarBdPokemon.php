@@ -26,28 +26,37 @@ function buscarPokemon($buscador, $conn)
     if ($result->num_rows > 0) {
         // Mostrar los resultados en una tabla
         echo "<h2>Resultados de la búsqueda:</h2>";
-        echo "<table border='1'>";
-        echo "<tr>";
+        echo "<div class='w3-margin'>";
+        echo "<table class='w3-table w3-bordered'>";
+        echo "<thead>";
+        echo "<tr class='w3-dark-grey'>";
         echo "<th>Imagen</th>";
         echo "<th>Tipo</th>";
         echo "<th>Número</th>";
         echo "<th>Nombre</th>";
         echo "</tr>";
+        echo "</thead>";
+        echo "<tbody>";
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
-            echo "<td><img src='imagenes/" . $row["imagen"] . "' alt='Imagen " . $row["imagen"] . "' class='imagenTabla'></td>";
+            echo "<td><img src='imagenes/" . $row["imagen"] . "' alt='' class='imagenTabla'></td>";
+            echo "<td>"; // Iniciar una nueva celda para los tipos
             $tipos = explode(',', $row["tipo"]); // Dividir los tipos por coma
             foreach ($tipos as $tipo) {
-                echo $tipo;
+                echo $tipo . "<br>"; // Mostrar cada tipo con un salto de línea
             }
+            echo "</td>"; // Finalizar la celda para los tipos
             echo "<td>" . $row["numero"] . "</td>";
             echo "<td><a href='paginaDeVisualizacion.php?id=" . $row["id"] . "'>" . $row["nombre"] . "</a></td>";
             echo "</tr>";
         }
+        echo "</tbody>";
         echo "</table>";
+        echo "</div>";
     } else {
         echo "No se encontraron Pokémon que coincidan con '$buscador'.";
     }
+
 }
 
 // Verificar si se ha enviado un término de búsqueda a través del formulario GET
@@ -55,10 +64,10 @@ if (isset($_GET['buscador'])) {
     $buscador= $_GET['buscador'];
     buscarPokemon($buscador, $conn);
 } else {
-    echo "Por favor, proporciona un término de búsqueda a través del formulario GET.";
+    echo "Por favor, proporciona un término de búsqueda";
 }
 
 
 // Cerrar conexión
- //$conn->close();
+ $conn->close();
 ?>
