@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="es">
 <head>
@@ -18,10 +21,11 @@
         ?>
     </div>
     <div id="user">
-        <form action="login.php" method="post">
-            Usuario:<input type="text" name="usuario">
-            Password:<input type="text" name="password">
-            <button type="submit">Log in</button></form>
+        <form action="login.php" method="post" id="userForm">
+            Usuario:<input type="text" name="usuario" id="usuario">
+            Password:<input type="password" name="password" id="password"><br><br>
+            <input type="submit" value="Log in">
+        </form>
     </div>
 </div>
 
