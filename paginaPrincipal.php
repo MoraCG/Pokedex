@@ -32,6 +32,20 @@
     </form>
 </div>
 <?php
+if(isset($_GET["error"])){
+    switch($_GET["error"]){
+        case 1:
+            echo"<div style='color:white;background-color:red'>USUARIO NO ENCONTRADO</div>";
+            break;
+        case 2:
+            echo"<div style='color:white;background-color:red'>USUARIO O PASSWORD INVALIDOS</div>";
+            break;
+        case 3:
+            echo"<div style='color:white;background-color:red'>USUARIO NO REGISTRADO</div>";
+            break;
+
+    }
+}
 include "ConsultarBdPokemon.php";
 include "footer.html";
 ?>
