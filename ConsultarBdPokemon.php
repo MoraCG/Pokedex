@@ -40,6 +40,7 @@ function buscarPokemon($buscador, $conn)
         echo "<th>Tipo</th>";
         echo "<th>Número</th>";
         echo "<th>Nombre</th>";
+        echo "<th>Modificaciones</th>";
         echo "</tr>";
         echo "</thead>";
         echo "<tbody>";
@@ -51,8 +52,12 @@ function buscarPokemon($buscador, $conn)
             echo "</td>"; // Finalizar la celda para los tipos
             echo "<td>" . $row["numero"] . "</td>";
             echo "<td><a href='paginaDeVisualizacion.php?id=" . $row["id"] . "'>" . $row["nombre"] . "</a></td>";
+            if(isset($_SESSION["usuario"])){
+            echo "<td><button>Editar</button>" . " " . "<button>Eliminar</button></td>";
+            }
             echo "</tr>";
         }
+        
         echo "</tbody>";
         echo "</table>";
         echo "</div>";
@@ -61,6 +66,8 @@ function buscarPokemon($buscador, $conn)
     }
 
 }
+
+
 
 // Verificar si se ha enviado un término de búsqueda a través del formulario GET
 if (isset($_GET['buscador'])) {
@@ -72,5 +79,5 @@ if (isset($_GET['buscador'])) {
 
 
 // Cerrar conexión
- $conn->close();
+$conn->close();
 ?>
