@@ -18,10 +18,15 @@
         ?>
     </div>
     <div id="user">
-        <form action="login.php" method="post">
-            Usuario:<input type="text" name="usuario">
-            Password:<input type="text" name="password">
-            <button type="submit">Log in</button></form>
+        <?php
+        session_start();
+        if(isset($_SESSION["usuario"])){
+            echo $_SESSION["usuario"];
+        }else{
+            header("location:paginaPrincipal.php?error=1");
+            exit();
+        }
+        ?>
     </div>
 </div>
 
