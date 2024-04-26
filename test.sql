@@ -154,23 +154,23 @@ CREATE TABLE `tipo` (
 --
 
 INSERT INTO `tipo` (`id`, `nombre`) VALUES
-(16, 'Acero'),
-(5, 'Agua'),
-(6, 'Bicho'),
-(17, 'Dragón'),
-(9, 'Eléctrico'),
-(15, 'Fantasma'),
-(3, 'Fuego'),
-(11, 'Hada'),
-(12, 'Hielo'),
-(10, 'Lucha'),
-(7, 'Normal'),
-(1, 'Planta'),
-(13, 'Psíquico'),
-(14, 'Roca'),
-(8, 'Tierra'),
-(2, 'Veneno'),
-(4, 'Volador');
+(16, 'acero'),
+(5, 'agua'),
+(6, 'bicho'),
+(17, 'dragón'),
+(9, 'eléctrico'),
+(15, 'fantasma'),
+(3, 'fuego'),
+(11, 'hada'),
+(12, 'hielo'),
+(10, 'lucha'),
+(7, 'normal'),
+(1, 'planta'),
+(13, 'psíquico'),
+(14, 'roca'),
+(8, 'tierra'),
+(2, 'veneno'),
+(4, 'volador');
 
 --
 -- Índices para tablas volcadas

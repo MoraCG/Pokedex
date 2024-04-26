@@ -33,11 +33,9 @@ function mostrarPokemonSeleccionado($id)
     $stmtTipos->execute();
     $resultTipos = $stmtTipos->get_result();
     $tipos = "";
-    while ($rowTipo = $resultTipos->fetch_assoc()) {
-        $tipos .= $rowTipo['nombre'] . ", ";
-    }
-    $tipos = rtrim($tipos, ", "); // Eliminar la última coma y espacio
-    $stmtTipos->close();
+//    while ($rowTipo = $resultTipos->fetch_assoc()) {
+//        $tipos .= $rowTipo['nombre'] . ", ";
+//    }
 
     // Imprimir la sección del Pokémon
     echo '<section class="w3-center" id="contenedorInfo">
@@ -46,9 +44,10 @@ function mostrarPokemonSeleccionado($id)
     </div>
     <div class="w3-margin" id="info">
         <div id="tipoNombre">';
-    // foreach ($tipos as $tipo) {
-    echo '<img src="#" alt="Tipo" id="imgTipo">';
-    //  };
+    while ($rowTipo = $resultTipos->fetch_assoc()) {
+        echo '<img src="TipoPokemon/tipo_' . $rowTipo["nombre"] . '_icono.png" alt="Tipo" id="imgTipo">';
+    }
+
     echo '<h2>| ' . $nombre . '</h2>
         </div>
         <div>
