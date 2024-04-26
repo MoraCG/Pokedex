@@ -3,7 +3,7 @@
 $servername = "localhost"; // Host de la base de datos
 $username = "root"; // Nombre de usuario
 $password = ""; // Contraseña predeterminada de MySQL en XAMPP
-$database = "listapokemon"; // Nombre de la base de datos que quieres conectar
+$database = "test"; // Nombre de la base de datos que quieres conectar
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $database);

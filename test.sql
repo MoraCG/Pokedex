@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-04-2024 a las 19:15:43
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Tiempo de generación: 26-04-2024 a las 16:03:13
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,8 +18,26 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `listapokemon`
+-- Base de datos: `test`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `login`
+--
+
+CREATE TABLE `login` (
+  `usuario` varchar(200) NOT NULL,
+  `password` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `login`
+--
+
+INSERT INTO `login` (`usuario`, `password`) VALUES
+('admin', '1234');
 
 -- --------------------------------------------------------
 
@@ -38,6 +56,7 @@ CREATE TABLE `pokemon` (
 --
 -- Volcado de datos para la tabla `pokemon`
 --
+
 INSERT INTO `pokemon` (`id`, `numero`, `nombre`, `imagen`, `descripcion`) VALUES
 (1, 1, 'Bulbasaur', 'bulbasaur.png', 'Bulbasaur puede ser visto absorbiendo luz solar con la espalda. La semilla en su lomo madura para una flor.'),
 (2, 2, 'Ivysaur', 'ivysaur.png', 'Ivysaur tiene el bulbo de una semilla en su espalda y un par de pequeñas hojas.'),
@@ -65,7 +84,6 @@ INSERT INTO `pokemon` (`id`, `numero`, `nombre`, `imagen`, `descripcion`) VALUES
 (24, 24, 'Kakuna', 'kakuna.png', 'Kakuna permanece inmóvil mientras desarrolla su caparazón duro que lo protege de los ataques.'),
 (25, 25, 'Beedrill', 'beedrill.png', 'Beedrill es muy agresivo y atacará a cualquier intruso que se acerque a su colmena.');
 
-
 -- --------------------------------------------------------
 
 --
@@ -77,7 +95,9 @@ CREATE TABLE `pokemon_tipo` (
   `tipo_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
+--
+-- Volcado de datos para la tabla `pokemon_tipo`
+--
 
 INSERT INTO `pokemon_tipo` (`pokemon_id`, `tipo_id`) VALUES
 (1, 1),
@@ -95,28 +115,32 @@ INSERT INTO `pokemon_tipo` (`pokemon_id`, `tipo_id`) VALUES
 (9, 5),
 (10, 6),
 (11, 6),
-(12, 6),
 (12, 4),
-(13, 6),
+(12, 6),
 (13, 2),
-(14, 6),
+(13, 6),
 (14, 2),
-(15, 6),
+(14, 6),
 (15, 2),
-(16, 7),
+(15, 6),
 (16, 4),
-(17, 7),
+(16, 7),
 (17, 4),
-(18, 7),
+(17, 7),
 (18, 4),
+(18, 7),
 (19, 7),
 (20, 7),
 (21, 6),
 (22, 6),
 (23, 6),
 (24, 6),
-(25, 6),
-(25, 2);
+(25, 2),
+(25, 6);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tipo`
 --
 

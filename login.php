@@ -24,7 +24,7 @@ function consultarBD($usuario, $password){
     if (!$conn) {
         die("Error al conectar la base de datos: " . mysqli_connect_error());
     }
-    $sql = "SELECT 1 FROM 'Login' WHERE usuario = '$usuario' && password = '$password'";
+    $sql = "SELECT 1 FROM 'login' WHERE usuario = '$usuario' && password = '$password'";
     $result = mysqli_query($conn, $sql);
     return mysqli_num_rows($result) == 1;
 }
