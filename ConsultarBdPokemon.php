@@ -51,7 +51,7 @@ function buscarPokemon($buscador, $conn)
         echo "<tbody>";
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
-            echo "<td><img src='/imagenes/pokemon/" . $row["imagen"] . "' alt='imagen.jpg' class='imagenTabla'></td>";
+            echo "<td><img src='pokemon/" . $row["imagen"] . "' alt='imagen.jpg' class='imagenTabla'></td>";
 
             echo "<td>" . $row["tipos"] . "</td>";
             echo "</td>"; // Finalizar la celda para los tipos
