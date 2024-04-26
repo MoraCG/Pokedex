@@ -15,27 +15,29 @@ if ($conn->connect_error) {
 function mostrarPokemonSeleccionado($id)
 {
     global $conn;
-    // Obtener el nombre del Pokémon
-    $resultNombre = $conn->query("SELECT nombre FROM pokemon WHERE id = " . $id);
-    $rowNombre = $resultNombre->fetch_assoc();
-    $nombre = $rowNombre['nombre'];
 
-    // Obtener la imagen del Pokémon
-    $resultImagen = $conn->query("SELECT imagen FROM pokemon WHERE id = " . $id);
-    $rowImagen = $resultImagen->fetch_assoc();
-    $imagen = $rowImagen['imagen'];
+    // Consulta preparada para obtener el nombre, imagen y descripción del Pokémon
+    $stmt = $conn->prepare("SELECT nombre, imagen, descripcion FROM pokemon WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $stmt->bind_result($nombre, $imagen, $descripcion);
+    $stmt->fetch();
+    $stmt->close();
 
-    // Obtener la descripción del Pokémon
-    $resultDescripcion = $conn->query("SELECT descripcion FROM pokemon WHERE id = " . $id);
-    $rowDescripcion = $resultDescripcion->fetch_assoc();
-    $descripcion = $rowDescripcion['descripcion'];
-
-    // Obtener los tipos del Pokémon
-    $resultTipos = $conn->query("SELECT T.nombre FROM pokemon P 
+    // Consulta preparada para obtener los tipos del Pokémon
+    $stmtTipos = $conn->prepare("SELECT T.nombre FROM pokemon P 
                    JOIN pokemon_tipo PoT ON P.id = PoT.pokemon_id
                    JOIN Tipo T ON PoT.tipo_id = T.id
-                   WHERE P.id = " . $id);
+                   WHERE P.id = ?");
+    $stmtTipos->bind_param("i", $id);
+    $stmtTipos->execute();
+    $resultTipos = $stmtTipos->get_result();
     $tipos = "";
+    while ($rowTipo = $resultTipos->fetch_assoc()) {
+        $tipos .= $rowTipo['nombre'] . ", ";
+    }
+    $tipos = rtrim($tipos, ", "); // Eliminar la última coma y espacio
+    $stmtTipos->close();
 
     // Imprimir la sección del Pokémon
     echo '<section class="w3-center" id="contenedorInfo">
@@ -51,11 +53,13 @@ function mostrarPokemonSeleccionado($id)
         </div>
         <div>
             <p>' . $descripcion . '</p>
+            <p>Tipos: ' . $tipos . '</p>
         </div>
     </div>
 </section>';
 }
+
 $id = isset($_GET["id"]) ? $_GET["id"] : "";
 mostrarPokemonSeleccionado($id);
-$conn->close();
+//$conn->close();
 ?>
