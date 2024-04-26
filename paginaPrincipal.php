@@ -31,25 +31,6 @@
         <input type="submit" name="buscar" id="buscar" value="¿Quién es ese pokemon?">
     </form>
 </div>
-<div class="w3-margin">
-    <table class="w3-table w3-bordered">
-        <thead>
-        <tr class="w3-dark-grey">
-            <th>Imagen</th>
-            <th>Tipo</th>
-            <th>Número</th>
-            <th>Nombre</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><img src="#" alt="Imagen 1" class="imagenTabla"></td>
-            <td>Tipo 1</td>
-            <td>123</td>
-            <td><a href="paginaDeVisualizacion.php">Nombre 1</a></td>
-        </tr>
-    </table>
-</div>
 <?php
 include "ConsultarBdPokemon.php";
 include "footer.html";

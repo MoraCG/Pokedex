@@ -18,13 +18,17 @@ if(isset($_POST["usuario"]) && isset($_POST["password"])){
     header("location:paginaPrincipal.php?error=3");
     exit();
 }
-//ESTA BASE DE DATOS "test" NO EXISTE TOIDAVIA, NO LA PUDE CREAR
+
 function consultarBD($usuario, $password){
-    $conn = new mysqli_connect("localhost", "root", "", "test");
-    if (!$conn) {
-        die("Error al conectar la base de datos: " . mysqli_connect_error());
+
+    // Crear conexión
+    $conn = new mysqli("localhost", "root", "", "test");
+
+    // Verificar la conexión
+    if ($conn->connect_error) {
+        die("La conexión falló: " . $conn->connect_error);
     }
-    $sql = "SELECT 1 FROM 'login' WHERE usuario = '$usuario' && password = '$password'";
+    $sql = "SELECT * FROM login WHERE usuario = '$usuario' AND password = '$password'";
     $result = mysqli_query($conn, $sql);
     return mysqli_num_rows($result) == 1;
 }
