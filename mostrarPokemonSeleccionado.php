@@ -52,7 +52,6 @@ function mostrarPokemonSeleccionado($id)
         </div>
         <div>
             <p>' . $descripcion . '</p>
-            <p>Tipos: ' . $tipos . '</p>
         </div>
     </div>
 </section>';
