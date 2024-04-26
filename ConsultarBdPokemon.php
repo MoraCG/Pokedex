@@ -18,23 +18,43 @@ function eliminar($idPokemon, $conn){
     return $conn->query($sql);
 }
 
-function buscarPokemon($buscador, $conn)
+function buscarPokemon($buscador = "", $conn)
 {
+    // Variable para controlar si se ha realizado una búsqueda
+    $busquedaRealizada = !empty($buscador);
 
-    // Preparar la consulta
+    // Si se ha realizado una búsqueda, ejecutar la consulta para la búsqueda
+    if ($busquedaRealizada) {
+        // Mensaje para los resultados de búsqueda
+        echo "<h2>Resultados de la búsqueda:</h2>";
 
-    $sql = "SELECT pokemon.*, GROUP_CONCAT(tipo.nombre SEPARATOR ',') AS tipos 
-        FROM pokemon 
-        INNER JOIN pokemon_tipo ON pokemon.id = pokemon_tipo.pokemon_id 
-        INNER JOIN tipo ON pokemon_tipo.tipo_id = tipo.id 
-        WHERE pokemon.nombre LIKE '%$buscador%' 
-        GROUP BY pokemon.id 
-        LIMIT 151";
+        // Preparar la consulta para la búsqueda
+        $sql = "SELECT pokemon.*, GROUP_CONCAT(tipo.nombre SEPARATOR ',') AS tipos 
+            FROM pokemon 
+            INNER JOIN pokemon_tipo ON pokemon.id = pokemon_tipo.pokemon_id 
+            INNER JOIN tipo ON pokemon_tipo.tipo_id = tipo.id 
+            WHERE pokemon.nombre LIKE '%$buscador%' 
+            GROUP BY pokemon.id 
+            LIMIT 151";
+    } else {
+        // Si no se ha realizado una búsqueda, mostrar la tabla completa
+        // Mensaje para la tabla completa
+        echo "<h2>Tabla de Pokémon</h2>";
+
+        // Preparar la consulta para la tabla completa
+        $sql = "SELECT pokemon.*, GROUP_CONCAT(tipo.nombre SEPARATOR ',') AS tipos 
+            FROM pokemon 
+            INNER JOIN pokemon_tipo ON pokemon.id = pokemon_tipo.pokemon_id 
+            INNER JOIN tipo ON pokemon_tipo.tipo_id = tipo.id 
+            GROUP BY pokemon.id 
+            LIMIT 151";
+    }
+
     $result = $conn->query($sql);
-// Verificar si se encontraron resultados
+
+    // Verificar si se encontraron resultados
     if ($result->num_rows > 0) {
         // Mostrar los resultados en una tabla
-        echo "<h2>Resultados de la búsqueda:</h2>";
         echo "<div class='w3-margin'>";
         echo "<table class='w3-table w3-bordered'>";
         echo "<thead>";
@@ -54,7 +74,6 @@ function buscarPokemon($buscador, $conn)
             echo "<td><img src='pokemon/" . $row["imagen"] . "' alt='imagen.jpg' class='imagenTabla'></td>";
 
             echo "<td>" . $row["tipos"] . "</td>";
-            echo "</td>"; // Finalizar la celda para los tipos
             echo "<td>" . $row["numero"] . "</td>";
             echo "<td><a href='paginaDeVisualizacion.php?id=" . $row["id"] . "'>" . $row["nombre"] . "</a></td>";
             if(isset($_SESSION["usuario"])){
@@ -62,15 +81,21 @@ function buscarPokemon($buscador, $conn)
                 //FALTA LA REFERENCIA A LA CONNEXION PARA PODER ELIMINAR
                 echo "<button onclick='eliminar(" . $row["id"] . ")'>Eliminar</button></td>";
             }
-            
+
             echo "</tr>";
         }
-        
+
         echo "</tbody>";
         echo "</table>";
         echo "</div>";
     } else {
-        echo "No se encontraron Pokémon que coincidan con '$buscador'.";
+        // Si no se encontraron resultados en la búsqueda, mostrar la tabla completa
+        if ($busquedaRealizada) {
+            echo "No se encontraron Pokémon que coincidan con '$buscador'. Mostrando la tabla completa.";
+            buscarPokemon("", $conn); // Mostrar la tabla completa
+        } else {
+            echo "No hay Pokémon registrados en la base de datos.";
+        }
     }
 
 }
@@ -80,10 +105,11 @@ if (isset($_GET['buscador'])) {
     $buscador= $_GET['buscador'];
     buscarPokemon($buscador, $conn);
 } else {
-    echo "Por favor, proporciona un término de búsqueda";
+    // Si no se ha realizado una búsqueda, mostrar la tabla completa
+    buscarPokemon("", $conn);
 }
 
-
 // Cerrar conexión
+
 $conn->close();
 ?>
