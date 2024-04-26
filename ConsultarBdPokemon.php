@@ -13,10 +13,10 @@ if ($conn->connect_error) {
     die("La conexión falló: " . $conn->connect_error);
 }
 
-// function eliminar($idPokemon, $conn){
-//     $sql = "DELETE FROM pokemon. WHERE pokemon.id = $idPokemon";
-//     return $conn->query($sql);
-// }
+function eliminar($idPokemon, $conn){
+    $sql = "DELETE FROM pokemon WHERE pokemon.id = $idPokemon";
+    return $conn->query($sql);
+}
 
 function buscarPokemon($buscador, $conn)
 {
@@ -58,8 +58,11 @@ function buscarPokemon($buscador, $conn)
             echo "<td>" . $row["numero"] . "</td>";
             echo "<td><a href='paginaDeVisualizacion.php?id=" . $row["id"] . "'>" . $row["nombre"] . "</a></td>";
             if(isset($_SESSION["usuario"])){
-            echo "<td><button onclick='editar()'>Editar</button>" ;//. " " . "<button onclick='" . eliminar($row["id"], $conn) . "'>Eliminar</button></td>";
+                echo "<td><button onclick='editar()'>Editar</button>" . " ";
+                //FALTA LA REFERENCIA A LA CONNEXION PARA PODER ELIMINAR
+                echo "<button onclick='eliminar(" . $row["id"] . ")'>Eliminar</button></td>";
             }
+            
             echo "</tr>";
         }
         
