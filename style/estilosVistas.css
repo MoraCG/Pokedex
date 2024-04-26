@@ -27,9 +27,15 @@ input {
 }
 
 #contenedorInfo{
+    margin-left: 7rem;
+    margin-right: 7rem;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+
+#imgVisualizacion{
+    height: 20rem;
 }
 
 #tipoNombre{
@@ -37,7 +43,6 @@ input {
 }
 
 #imgTipo{
-    width: 2rem;
     height: 2rem;
     align-self: center;
 }

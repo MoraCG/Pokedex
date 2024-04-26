@@ -13,7 +13,8 @@ if ($conn->connect_error) {
     die("La conexión falló: " . $conn->connect_error);
 }
 
-function eliminar($idPokemon, $conn){
+function eliminar($idPokemon, $conn)
+{
     $sql = "DELETE FROM pokemon WHERE pokemon.id = $idPokemon";
     return $conn->query($sql);
 }
@@ -43,7 +44,7 @@ function buscarPokemon($buscador, $conn)
         echo "<th>Tipo</th>";
         echo "<th>Número</th>";
         echo "<th>Nombre</th>";
-        if(isset($_SESSION["usuario"])){
+        if (isset($_SESSION["usuario"])) {
             echo "<th>Modificaciones</th>";
         }
         echo "</tr>";
@@ -57,15 +58,15 @@ function buscarPokemon($buscador, $conn)
             echo "</td>"; // Finalizar la celda para los tipos
             echo "<td>" . $row["numero"] . "</td>";
             echo "<td><a href='paginaDeVisualizacion.php?id=" . $row["id"] . "'>" . $row["nombre"] . "</a></td>";
-            if(isset($_SESSION["usuario"])){
+            if (isset($_SESSION["usuario"])) {
                 echo "<td><button onclick='editar()'>Editar</button>" . " ";
                 //FALTA LA REFERENCIA A LA CONNEXION PARA PODER ELIMINAR
-                echo "<button onclick='eliminar(" . $row["id"] . ")'>Eliminar</button></td>";
+                //         echo "<button onclick='eliminar(" . $row["id"] . ")'>Eliminar</button></td>";
             }
-            
+
             echo "</tr>";
         }
-        
+
         echo "</tbody>";
         echo "</table>";
         echo "</div>";
@@ -77,12 +78,11 @@ function buscarPokemon($buscador, $conn)
 
 // Verificar si se ha enviado un término de búsqueda a través del formulario GET
 if (isset($_GET['buscador'])) {
-    $buscador= $_GET['buscador'];
+    $buscador = $_GET['buscador'];
     buscarPokemon($buscador, $conn);
 } else {
     echo "Por favor, proporciona un término de búsqueda";
 }
-
 
 // Cerrar conexión
 $conn->close();
