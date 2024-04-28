@@ -47,6 +47,12 @@ if(isset($_GET["error"])){
         case 3:
             echo"<div style='color:white;background-color:red'>USUARIO NO REGISTRADO</div>";
             break;
+        case 4:
+            echo"<div style='color:white;background-color:red'>ERROR AL ELIMINAR EL POKEMON</div>";
+            break;
+        case 5:
+            echo"<div style='color:white;background-color:red'>ERROR AL EDITAR EL POKEMON</div>";
+            break;
 
     }
 }
