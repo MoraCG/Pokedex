@@ -46,7 +46,7 @@ if ($result->num_rows > 0) {
         echo "<td>";
         $tipos = explode(',', $row["tipos"]);
         foreach ($tipos as $tipo) {
-            echo "<img src='TipoPokemon/tipo_" . trim($tipo) . ".png' alt='Tipo " . trim($tipo) . "' style='height: 24px;' /> "; // Establece solo la altura para mantener la proporción
+            echo "<img src='TipoPokemon/tipo_" . trim($tipo) . ".png' alt='Tipo " . trim($tipo) . " class='tipoTabla'> "; // Establece solo la altura para mantener la proporción
         }
         echo "</td>";
 

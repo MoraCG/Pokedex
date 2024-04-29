@@ -4,29 +4,36 @@ input {
     border: 1px solid #ccc;
 }
 
-.imagenTabla{
+.imagenTabla {
     height: 3rem;
 }
-#contenedorHeader{
+
+#contenedorHeader {
     display: flex;
     flex-direction: row;
 }
-#header{
+
+#header {
     width: 80%;
 }
-#user{
+
+#user {
     width: 20%;
 }
 
-#buscador{
+#buscador {
     width: 50rem;
 }
 
-.imagenTabla{
+.tipoTabla {
+    height: 24px;
+}
+
+.imagenTabla {
     width: 3.125rem;
 }
 
-#contenedorInfo{
+#contenedorInfo {
     margin-left: 7rem;
     margin-right: 7rem;
     display: flex;
@@ -34,15 +41,104 @@ input {
     justify-content: space-around;
 }
 
-#imgVisualizacion{
+#imgVisualizacion {
     height: 20rem;
 }
 
-#tipoNombre{
+#tipoNombre {
     display: flex;
 }
 
-#imgTipo{
+#imgTipo {
     height: 2rem;
     align-self: center;
+}
+
+/* Estilos para en tablet y celular */
+@media screen and (max-width: 1024px) {
+    input {
+        width: 90%;
+    }
+
+    #buscador {
+        width: 70%;
+    }
+
+    #buscar {
+        width: auto;
+    }
+
+    #userForm {
+        position: relative;
+        right: 5rem;
+    }
+
+    #imgTipo {
+        height: 1.8rem;
+    }
+
+    input {
+        padding: 8px;
+        border-radius: 40px;
+    }
+
+    .imagenTabla {
+        height: 2rem;
+        width: 2rem; /* Ajusta el ancho para mantener la proporción */
+    }
+}
+
+/* Estilos para el contenedor de header en celular */
+@media screen and (max-width: 600px) {
+    input {
+        width: 80%;
+    }
+
+    #userForm {
+        align-items: center;
+        max-width: fit-content;
+        align-self: end;
+        position: relative;
+        right: 2rem;
+    }
+
+    #buscador {
+        width: 95%;
+    }
+
+    #buscar {
+        width: auto;
+    }
+
+    .tipoTabla {
+        height: .2rem;
+    }
+
+    .imagenTabla {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+
+    .titulo {
+        font-size: 1.4rem;
+    }
+
+    #tipoNombre {
+        width: 100%;
+        flex-wrap: nowrap;
+    }
+
+    #imgTipo {
+        align-self: center;
+        height: 1.2rem;
+    }
+
+    #contenedorInfo {
+        flex-wrap: wrap;
+    }
+
+
+    #imgVisualizacion {
+        height: 10rem;
+    }
 }

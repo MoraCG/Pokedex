@@ -21,7 +21,7 @@
         <?php
         session_start();
         if(isset($_SESSION["usuario"])){
-            echo $_SESSION["usuario"];
+            echo "<p>" . $_SESSION["usuario"] . "</p>";
         }else{
             header("location:paginaPrincipal.php?error=1");
             exit();
