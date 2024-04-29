@@ -26,10 +26,13 @@
     </div>
 </div>
 
-<div class="w3-container w3-center w3-margin">
+<div class="w3-container w3-margin">
     <form action="#" method="get" class="inputsBuscar">
-        <input type="text" name="buscador" id="buscador" placeholder="Ingrese nombre, tipo o numero de pokémon">
+        <label for="buscador" id="labelBuscador">Ingrese nombre, tipo o numero de pokémon:</label>
+        <div id="inputs" class="w3-center">
+        <input type="text" name="buscador" id="buscador">
         <input type="submit" name="buscar" id="buscar" value="¿Quién es ese pokemon?">
+        </div>
     </form>
 </div>
 <?php

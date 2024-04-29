@@ -1,4 +1,6 @@
 <?php
+// volví a agregar el session start pq sino no me deja loguearme
+session_start();
 if(isset($_POST["usuario"]) && isset($_POST["password"])){
     $usuario = $_POST["usuario"];
     $password = $_POST["password"];

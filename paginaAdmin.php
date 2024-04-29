@@ -21,11 +21,11 @@
         <?php
         session_start();
         if(isset($_SESSION["usuario"])){
-            echo "<p>" . $_SESSION["usuario"] . "</p>";
+            echo "<h2>" . $_SESSION["usuario"] . "</h2>";
         }else{
             header("location:paginaPrincipal.php?error=1");
             exit();
-        }
+      }
         ?>
     </div>
 </div>

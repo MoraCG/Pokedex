@@ -56,5 +56,6 @@ function mostrarPokemonSeleccionado($id)
 
 $id = isset($_GET["id"]) ? $_GET["id"] : "";
 mostrarPokemonSeleccionado($id);
+
 $conn->close();
 ?>

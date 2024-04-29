@@ -22,7 +22,7 @@ input {
 }
 
 #buscador {
-    width: 50rem;
+    width: 80%;
 }
 
 .tipoTabla {
@@ -60,8 +60,12 @@ input {
         width: 90%;
     }
 
+    #labelBuscador{
+        text-align: left;
+    }
+
     #buscador {
-        width: 70%;
+        width: 60%;
     }
 
     #buscar {
@@ -102,8 +106,20 @@ input {
         right: 2rem;
     }
 
-    #buscador {
-        width: 95%;
+    #labelBuscador{
+        text-align: left;
+    }
+
+    .inputsBuscar{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #inputs{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-self: center;
     }
 
     #buscar {
