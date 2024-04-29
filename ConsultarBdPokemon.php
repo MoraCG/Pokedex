@@ -53,11 +53,7 @@ if ($result->num_rows > 0) {
         echo "<td><a href='paginaDeVisualizacion.php?id=" . $row["id"] . "'>" . $row["nombre"] . "</a></td>";
         if (isset($_SESSION["usuario"])) {
             echo "<td><form action='eliminar.php' method='post'><button type='submit' name='eliminar' value='" . $row["id"] . "'>Eliminar</button></form>";
-            // echo "<td><form action='editar.php' method='post'>
-            //         <input type='text' name='id_registro'>
-            //         <input type='text' name='nuevo_valor'>
-            //         <button type='submit'>Editar</button>
-            //     </form>";
+            echo "<td><form action='editar.php' method='post'><button type='submit' name='editar' value='" . $row["id"] . "'>Editar</button></form>";
         }
         echo "</tr>";
     }
