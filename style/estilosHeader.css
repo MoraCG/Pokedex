@@ -6,3 +6,25 @@
 #pokedex{
     height: 6rem;
 }
+/* Estilos para la imagen en tablet y celular */
+@media screen and (max-width: 1024px) {
+    #pokebola {
+        width: 3rem;
+        height: 3rem;
+    }
+    #pokedex {
+         height: 4rem;
+     }
+}
+
+/* Estilos para la imagen en celular */
+@media screen and (max-width: 600px) {
+    #pokebola {
+        width: 2rem;
+        height: 2rem;
+    }
+    #pokedex {
+          height: 3rem;
+      }
+}
+

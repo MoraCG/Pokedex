@@ -10,7 +10,7 @@
     <link rel="icon" href="img/pokebolaLogo.png" type="image/png">
     <title>Info Pokémon</title>
 </head>
-<body>
+<body class="w3-light-gray">
 <?php
 include "header.html";
 include 'mostrarPokemonSeleccionado.php';

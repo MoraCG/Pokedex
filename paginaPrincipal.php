@@ -21,7 +21,7 @@ session_start();
         ?>
     </div>
     <div id="user">
-        <form action="login.php" method="post" id="userForm">
+        <form action="login.php" method="post" id="userForm" id="userForm">
             Usuario:<input type="text" name="usuario" id="usuario">
             Password:<input type="password" name="password" id="password"><br><br>
             <input type="submit" value="Log in">
@@ -30,7 +30,7 @@ session_start();
 </div>
 
 <div class="w3-container w3-center w3-margin">
-    <form action="#" method="get">
+    <form action="#" method="get" class="inputsBuscar">
         <input type="text" name="buscador" id="buscador" placeholder="Ingrese nombre, tipo o numero de pokémon">
         <input type="submit" name="buscar" id="buscar" value="¿Quién es ese pokemon?">
     </form>
