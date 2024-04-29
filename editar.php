@@ -13,19 +13,22 @@ if ($conn->connect_error) {
 }
 
 // Verificar si se han enviado los datos del formulario
-if(isset($_POST['id']) && isset($_POST['nuevo_valor'])) {
+if(isset($_POST['id_registro']) && isset($_POST['nuevo_valor'])) {
     // ID del registro que quieres editar
-    $id_a_editar = $_POST['id'];
+    $id_a_editar = $_POST['id_registro'];
     // Nuevo valor para el registro
     $nuevo_valor = $_POST['nuevo_valor'];
 
     // Consulta SQL para editar un registro
-    $sql = "UPDATE tu_tabla SET columna = '$nuevo_valor' WHERE id = $id_a_editar";
+    $sql = "UPDATE pokemon SET columna = '$nuevo_valor' WHERE id = $id_a_editar";
 
     if ($conn->query($sql) === TRUE) {
         echo "Registro editado correctamente";
+        header("location:paginaAdmin.php");
+        exit();
     } else {
-        echo "Error al editar registro: " . $conn->error;
+        header("location:paginaPrincipal.php?error=5");
+        exit();
     }
 }
 
