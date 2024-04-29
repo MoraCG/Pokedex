@@ -1,5 +1,4 @@
 <?php
-
 $servername = "localhost"; // Host de la base de datos
 $username = "root"; // Nombre de usuario
 $password = ""; // Contraseña predeterminada de MySQL en XAMPP

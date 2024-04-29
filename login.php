@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 if(isset($_POST["usuario"]) && isset($_POST["password"])){
     $usuario = $_POST["usuario"];
     $password = $_POST["password"];
