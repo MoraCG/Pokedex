@@ -11,18 +11,22 @@ $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
+$id_a_editar = isset($_GET['editar']) ? $_GET['editar'] : 0;
+$nuevoNombre = $_POST['nombre'];
+$nuevoNumero = $_POST['numeroPokemon'];
+$nuevaDescripcion = $_POST['descripcion'];
+$nuevosTipos = isset($_POST['tipos']) ? $_POST['tipos'] : array();
 
-// Verificar si se han enviado los datos del formulario
-if(isset($_POST['id_registro']) && isset($_POST['nuevo_valor'])) {
-    // ID del registro que quieres editar
-    $id_a_editar = $_POST['id_registro'];
-    // Nuevo valor para el registro
-    $nuevo_valor = $_POST['nuevo_valor'];
+// Consulta SQL para editar un registro
+$sql = "UPDATE pokemon SET numero = ?, nombre = ?, descripcion = ? WHERE id = ?";
+$stmt = $conn->prepare($sql);
 
-    // Consulta SQL para editar un registro
-    $sql = "UPDATE pokemon SET columna = '$nuevo_valor' WHERE id = $id_a_editar";
+// Vincular los parámetros
+$stmt->bind_param("issi", $nuevoNumero, $nuevoNombre, $nuevaDescripcion, $id_a_editar);
+$stmt->execute();
 
-    if ($conn->query($sql) === TRUE) {
+
+    if ($stmt->affected_rows > 0) {
         echo "Registro editado correctamente";
         header("location:paginaPrincipal.php");
         exit();
@@ -30,7 +34,6 @@ if(isset($_POST['id_registro']) && isset($_POST['nuevo_valor'])) {
         header("location:paginaPrincipal.php?error=5");
         exit();
     }
-}
 
 // Cerrar conexión
 $conn->close();

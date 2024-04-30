@@ -100,6 +100,9 @@ if(isset($_GET["error"])){
     }
 }
 include "ConsultarBdPokemon.php";
+if (isset($_SESSION["usuario"])) {
+    echo "<form action='formDeCreaciónEdición.php' method='get'><button type='submit' name='editar' value='0' class='w3-center button'>Crear Pokémon</button></form>";
+}
 include "footer.html";
 ?>
 
