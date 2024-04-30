@@ -23,7 +23,7 @@ if(isset($_POST['eliminar'])) {
 
     if ($conn->multi_query($sql) === TRUE) {
         echo "Registro eliminado correctamente";
-        header("location:paginaAdmin.php");
+        header("location:paginaPrincipal.php");
         exit();
     } else {
         header("location:paginaPrincipal.php?error=4");

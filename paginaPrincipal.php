@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="es">
 <head>
@@ -11,18 +14,32 @@
     <title>Home</title>
 </head>
 <body class="w3-light-grey">
+
 <div class="w3-container w3-center" id="contenedorHeader">
     <div id="header">
-        <?php
-        include "header.html";
-        ?>
+        <?php include "header.html"; ?>
     </div>
     <div id="user">
-        <form action="login.php" method="post" id="userForm" id="userForm">
-            Usuario:<input type="text" name="usuario" id="usuario">
-            Password:<input type="password" name="password" id="password"><br><br>
-            <input type="submit" value="Log in">
-        </form>
+        <?php
+        if (!isset($_SESSION["usuario"])) {
+            // Formulario de inicio de sesión si no está autenticado
+            ?>
+            <form action="login.php" method="post" id="userForm">
+                Usuario:<input type="text" name="usuario" id="usuario">
+                Password:<input type="password" name="password" id="password"><br><br>
+                <input type="submit" value="Log in">
+            </form>
+            <?php
+        } else {
+            // Botón para cerrar sesión si el usuario está autenticado
+            echo "<h2>Bienvenido, " . $_SESSION["usuario"] . "</h2>";
+            ?>
+            <form action="logout.php" method="post">
+                <input type="submit" value="Cerrar Sesión">
+            </form>
+            <?php
+        }
+        ?>
     </div>
 </div>
 
@@ -35,6 +52,32 @@
         </div>
     </form>
 </div>
+
+<style>
+    .btn {
+        background-color: #4CAF50; /* Verde */
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 12px;
+    }
+
+    .btn-danger {
+        background-color: #f44336; /* Rojo para botones de eliminación */
+    }
+
+    .btn-group {
+        display: inline-flex;
+        gap: 10px; /* Espaciado entre botones */
+    }
+</style>
+
 <?php
 if(isset($_GET["error"])){
     switch($_GET["error"]){
@@ -59,5 +102,7 @@ if(isset($_GET["error"])){
 include "ConsultarBdPokemon.php";
 include "footer.html";
 ?>
+
+
 </body>
 </html>

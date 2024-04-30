@@ -24,7 +24,7 @@ if(isset($_POST['id_registro']) && isset($_POST['nuevo_valor'])) {
 
     if ($conn->query($sql) === TRUE) {
         echo "Registro editado correctamente";
-        header("location:paginaAdmin.php");
+        header("location:paginaPrincipal.php");
         exit();
     } else {
         header("location:paginaPrincipal.php?error=5");

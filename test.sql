@@ -473,6 +473,7 @@ ALTER TABLE `tipo`
 
 --
 -- Restricciones para tablas volcadas
+-- Restricciones para tablas volcadas
 --
 
 --
