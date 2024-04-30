@@ -89,8 +89,11 @@ function buscarPokemon($buscador = "", $conn)
                 echo "<form action='eliminar.php' method='post' style='display: inline-block;'>";
                 echo "<button type='submit' name='eliminar' value='" . $row["id"] . "' class='btn btn-danger'>Eliminar</button>";
                 echo "</form>";
+
                 echo "<form action='formDeCreaciónEdición.php' method='get' style='display: inline-block;'>";
                 echo "<button type='submit' name='editar' value='" . $row["id"] . "' class='btn'>Editar</button>";
+                echo "</form>";
+
             }
             echo "</tr>";
         }

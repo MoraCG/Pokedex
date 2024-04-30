@@ -8,7 +8,7 @@
 #pokedex{
     height: 6rem;
     position: absolute;
-    right: 35%;
+    right: 41%;
 }
 /* Estilos para la imagen en tablet y celular */
 @media screen and (max-width: 1024px) {

@@ -22,7 +22,7 @@ $sql = "INSERT INTO pokemon (nombre, numero, descripcion) VALUES (?, ?, ?)";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("sis", $nombre, $numero, $descripcion);
 $stmt->execute();
-$new_pokemon_id = $stmt->insert_id; // Obtener el ID del nuevo Pokémon insertado
+$new_pokemon_id = $stmt->insert_id; // Obtener el id del nuevo Pokémon insertado
 $stmt->close();
 
 // Insertar los tipos del Pokémon en la tabla pokemon_tipo
