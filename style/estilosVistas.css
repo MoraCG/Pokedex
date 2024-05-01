@@ -1,10 +1,15 @@
-input{
+input, button {
     padding: 10px;
     border-radius: 50px;
     border: 1px solid #ccc;
 }
 
-textarea{
+#crearPokemon {
+    width: 70%;
+    background-color: #ababab;
+}
+
+textarea {
     padding: 10px;
     border-radius: 25px;
     border: 1px solid #ccc;
@@ -66,7 +71,7 @@ textarea{
         width: 90%;
     }
 
-    #labelBuscador{
+    #labelBuscador {
         text-align: left;
     }
 
@@ -112,16 +117,16 @@ textarea{
         right: 2rem;
     }
 
-    #labelBuscador{
+    #labelBuscador {
         text-align: left;
     }
 
-    .inputsBuscar{
+    .inputsBuscar {
         display: flex;
         flex-direction: column;
     }
 
-    #inputs{
+    #inputs {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
