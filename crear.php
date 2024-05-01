@@ -16,11 +16,45 @@ $nombre = $_POST['nombre'];
 $numero = $_POST['numeroPokemon'];
 $descripcion = $_POST['descripcion'];
 $tipos = isset($_POST['tipos']) ? $_POST['tipos'] : array();
+//------------------------------------------------------------------------
+
+
+// Directorio donde se almacenarán las imágenes
+$directorio_destino = 'pokemon/';
+
+// Verifica si se ha enviado una imagen
+if (isset($_FILES['fotoPokemon'])) {
+    $archivo_nombre = $_FILES['fotoPokemon']['name'];
+    $archivo_temporal = $_FILES['fotoPokemon']['tmp_name'];
+    $archivo_tamaño = $_FILES['fotoPokemon']['size'];
+    $archivo_error = $_FILES['fotoPokemon']['error'];
+
+
+
+        // Mueve el archivo cargado al directorio de destino
+        $ruta_destino = $directorio_destino . $archivo_nombre;
+        move_uploaded_file($archivo_temporal, $ruta_destino);
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Insertar el nuevo Pokémon en la tabla pokemon
-$sql = "INSERT INTO pokemon (nombre, numero, descripcion) VALUES (?, ?, ?)";
+// Insertar el nuevo Pokémon en la tabla pokemon
+$sql = "INSERT INTO pokemon (imagen, nombre, numero, descripcion) VALUES (?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("sis", $nombre, $numero, $descripcion);
+$stmt->bind_param("ssis", $archivo_nombre, $nombre, $numero, $descripcion);
 $stmt->execute();
 $new_pokemon_id = $stmt->insert_id; // Obtener el id del nuevo Pokémon insertado
 $stmt->close();
@@ -37,6 +71,13 @@ foreach ($tipos as $tipo) {
     $stmt->execute();
     $stmt->close();
 }
+
+
+
+
+
+
+
 
 // Cerrar la conexión
 $conn->close();
