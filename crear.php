@@ -3,7 +3,7 @@ $servername = "localhost"; // Host de la base de datos
 $username = "root"; // Nombre de usuario
 $password = ""; // Contraseña predeterminada de MySQL en XAMPP
 $database = "test"; // Nombre de la base de datos que quieres conectar
-
+require_once 'funciones.php';
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $database);
 
@@ -43,16 +43,4 @@ $conn->close();
 
 header("location:paginaPrincipal.php");
 
-// Función para obtener el ID de un tipo de la base de datos
-function obtenerIdTipo($conn, $tipo) {
-    $sql = "SELECT id FROM tipo WHERE nombre = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $tipo);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-    $tipo_id = $row['id'];
-    $stmt->close();
-    return $tipo_id;
-}
 exit();
