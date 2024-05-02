@@ -108,5 +108,5 @@ function buscarPokemon($buscador = "", $conn)
 }
 
 // Cerrar conexión
-//$conn->close();
+$conn->close();
 ?>

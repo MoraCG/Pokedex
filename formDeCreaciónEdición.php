@@ -21,7 +21,7 @@ if ($conn->connect_error) {
     die("La conexión falló: " . $conn->connect_error);
 }else{
     include 'header.html';
-    $editar = floatval($_GET['editar']);
+    $editar = isset($_GET['editar']) ? floatval($_GET['editar']) : 0;
     $accion = "";
     $query_tipos = "SELECT T.nombre FROM pokemon P JOIN pokemon_tipo PoT ON P.id = PoT.pokemon_id JOIN Tipo T ON PoT.tipo_id = T.id WHERE P.id = $editar";
     $resultado_tipos = mysqli_query($conn, $query_tipos);
@@ -66,7 +66,8 @@ if ($conn->connect_error) {
 
     include 'footer.html';
 }
-
+// Cerrar conexión
+$conn->close();
 ?>
 </body>
 </html>
