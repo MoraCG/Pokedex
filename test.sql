@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-04-2024 a las 16:03:13
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.2.0
+-- Tiempo de generación: 02-05-2024 a las 20:23:07
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -58,6 +58,26 @@ CREATE TABLE `pokemon` (
 --
 
 INSERT INTO `pokemon` (`id`, `numero`, `nombre`, `imagen`, `descripcion`) VALUES
+(1, 1, 'Bulbasaur', 'bulbasaur.png', 'Durante un tiempo después de nacer, vive de la luz que toma del sol y de los nutrientes que guarda en su bulbo, y depende de otros Pokémon para sobrevivir hasta que es lo suficientemente maduro.'),
+(2, 2, 'Ivysaur', 'ivysaur.png', '	El bulbo de la espalda crece al absorber nutrientes. Cuando florece, emite un aroma delicioso.'),
+(3, 3, 'Venusaur', 'venusaur.png', 'Venusaur es la forma final de Bulbasaur. Tiene una gran flor en su espalda que emite un aroma fuerte.'),
+(4, 4, 'Charmander', 'charmander.png', 'Charmander tiene una llama en la punta de su cola. La llama se enciende cuando se siente emocionado.'),
+(5, 5, 'Charmeleon', 'charmeleon.png', 'Charmeleon tiene una naturaleza feroz y nunca retrocede ante un oponente más fuerte.'),
+(6, 6, 'Charizard', 'charizard.png', 'Charizard vuela por el cielo y lanza llamas a sus oponentes desde arriba.'),
+(7, 7, 'Squirtle', 'squirtle.png', 'Squirtle puede ocultarse en su caparazón y disparar agua con gran precisión.'),
+(8, 8, 'Wartortle', 'wartortle.png', 'Wartortle puede nadar fácilmente en mares y ríos, moviendo su cola para impulsarse.'),
+(9, 9, 'Blastoise', 'blastoise.png', 'Blastoise tiene cañones de agua en su caparazón que dispara con gran precisión.'),
+(10, 10, 'Caterpie', 'caterpie.png', 'Caterpie tiene un apetito insaciable y puede devorar grandes cantidades de hojas en poco tiempo.'),
+(11, 11, 'Metapod', 'metapod.png', 'Metapod se endurece como una roca cuando se siente amenazado, protegiéndose con su caparazón.'),
+(12, 12, 'Butterfree', 'butterfree.png', 'Butterfree tiene antenas que emiten un olor dulce que puede hacer dormir a sus enemigos.'),
+(13, 13, 'Weedle', 'weedle.png', 'Weedle tiene un aguijón venenoso en la parte superior de su cabeza que usa para defenderse.'),
+(14, 14, 'Kakuna', 'kakuna.png', 'Kakuna permanece inmóvil mientras desarrolla su caparazón duro que lo protege de los ataques.'),
+(15, 15, 'Beedrill', 'beedrill.png', 'Beedrill es muy agresivo y atacará a cualquier intruso que se acerque a su colmena.'),
+(16, 16, 'Pidgey', 'pidgey.png', 'Pidgey tiene una vista aguda y puede encontrar comida fácilmente, incluso en áreas urbanas.'),
+(17, 17, 'Pidgeotto', 'pidgeotto.png', 'Pidgeotto puede volar a grandes alturas y tiene garras afiladas para atrapar a su presa.'),
+(18, 18, 'Pidgeot', 'pidgeot.png', 'Pidgeot tiene una gran envergadura y puede volar a grandes velocidades, superando fácilmente a sus presas.'),
+(19, 19, 'Rattata', 'rattata.png', 'Rattata es nocturno y se mueve con sigilo para robar comida de los almacenes de las casas.'),
+(20, 20, 'Raticate', 'raticate.png', 'Raticate tiene poderosos dientes que puede usar para morder y triturar incluso los objetos más duros.'),
 (21, 21, 'Spearow', 'spearow.png', 'Spearow es un pájaro pequeño pero agresivo. Se le ve en grupos atacando a otros Pokémon para proteger su territorio.'),
 (22, 22, 'Fearow', 'fearow.png', 'Fearow tiene un pico largo y afilado. Puede volar largas distancias y cazar presas desde el aire.'),
 (23, 23, 'Ekans', 'ekans.png', 'Ekans es una serpiente que puede moverse sigilosamente y envolverse alrededor de sus enemigos para atraparlos.'),
@@ -206,196 +226,223 @@ CREATE TABLE `pokemon_tipo` (
 --
 
 INSERT INTO `pokemon_tipo` (`pokemon_id`, `tipo_id`) VALUES
-(21, 7),
+(1, 1),
+(1, 2),
+(2, 1),
+(2, 2),
+(3, 1),
+(3, 2),
+(4, 3),
+(5, 3),
+(6, 3),
+(6, 4),
+(7, 5),
+(8, 5),
+(9, 5),
+(10, 6),
+(11, 6),
+(12, 4),
+(12, 6),
+(13, 2),
+(13, 6),
+(14, 2),
+(14, 6),
+(15, 2),
+(15, 6),
+(16, 4),
+(16, 7),
+(17, 4),
+(17, 7),
+(18, 4),
+(18, 7),
+(19, 7),
+(20, 7),
 (21, 4),
-(22, 7),
+(21, 7),
 (22, 4),
+(22, 7),
 (23, 2),
 (24, 2),
-(25, 9);
-
-INSERT INTO `pokemon_tipo` (`pokemon_id`, `tipo_id`) VALUES
-(26, 9), -- Raichu (Eléctrico)
-(27, 8), -- Sandshrew (Tierra)
-(28, 8), -- Sandslash (Tierra)
-(29, 2), -- Nidoran♀ (Veneno)
-(30, 2), -- Nidorina (Veneno)
-(31, 2), -- Nidoqueen (Veneno)
-(31, 8), -- Nidoqueen (Tierra)
-(32, 2), -- Nidoran♂ (Veneno)
-(33, 2), -- Nidorino (Veneno)
-(34, 2), -- Nidoking (Veneno)
-(34, 8), -- Nidoking (Tierra)
-(35, 11), -- Clefairy (Hada)
-(36, 11), -- Clefable (Hada)
-(37, 3), -- Vulpix (Fuego)
-(38, 3), -- Ninetales (Fuego)
-(39, 7), -- Jigglypuff (Normal)
-(39, 11), -- Jigglypuff (Hada)
-(40, 7), -- Wigglytuff (Normal)
-(40, 11), -- Wigglytuff (Hada)
-(41, 2), -- Zubat (Veneno)
-(41, 4), -- Zubat (Volador)
-(42, 2), -- Golbat (Veneno)
-(42, 4), -- Golbat (Volador)
-(43, 1), -- Oddish (Planta)
-(43, 2), -- Oddish (Veneno)
-(44, 1), -- Gloom (Planta)
-(44, 2), -- Gloom (Veneno)
-(45, 1), -- Vileplume (Planta)
-(45, 2), -- Vileplume (Veneno)
-(46, 6), -- Paras (Bicho)
-(46, 2), -- Paras (Veneno)
-(47, 6), -- Parasect (Bicho)
-(47, 2), -- Parasect (Veneno)
-(48, 6), -- Venonat (Bicho)
-(48, 2), -- Venonat (Veneno)
-(49, 6), -- Venomoth (Bicho)
-(49, 2), -- Venomoth (Veneno)
-(50, 8), -- Diglett (Tierra)
-(51, 8), -- Dugtrio (Tierra)
-(52, 7), -- Meowth (Normal)
-(53, 7), -- Persian (Normal)
-(54, 13), -- Psyduck (Psíquico)
-(54, 5), -- Psyduck (Agua)
-(55, 13), -- Golduck (Psíquico)
-(55, 5), -- Golduck (Agua)
-(56, 10), -- Mankey (Lucha)
-(57, 10), -- Primeape (Lucha)
-(58, 3), -- Growlithe (Fuego)
-(59, 3), -- Arcanine (Fuego)
-(60, 5), -- Poliwag (Agua)
-(61, 5), -- Poliwhirl (Agua)
-(62, 5), -- Poliwrath (Agua)
-(62, 10), -- Poliwrath (Lucha)
-(63, 13), -- Abra (Psíquico)
-(64, 13), -- Kadabra (Psíquico)
-(65, 13), -- Alakazam (Psíquico)
-(66, 10), -- Machop (Lucha)
-(67, 10), -- Machoke (Lucha)
-(68, 10), -- Machamp (Lucha)
-(69, 1), -- Bellsprout (Planta)
-(69, 2), -- Bellsprout (Veneno)
-(70, 1), -- Weepinbell (Planta)
-(70, 2), -- Weepinbell (Veneno)
-(71, 1), -- Victreebel (Planta)
-(71, 2), -- Victreebel (Veneno)
-(72, 2), -- Tentacool (Veneno)
-(72, 5), -- Tentacool (Agua)
-(73, 2), -- Tentacruel (Veneno)
-(73, 5), -- Tentacruel (Agua)
-(74, 14), -- Geodude (Roca)
-(74, 8), -- Geodude (Tierra)
-(75, 14), -- Graveler (Roca)
-(75, 8), -- Graveler (Tierra)
-(76, 14), -- Golem (Roca)
-(76, 8), -- Golem (Tierra)
-(77, 3), -- Ponyta (Fuego)
-(78, 3), -- Rapidash (Fuego)
-(79, 13), -- Slowpoke (Psíquico)
-(79, 5), -- Slowpoke (Agua)
-(80, 13), -- Slowbro (Psíquico)
-(80, 5), -- Slowbro (Agua)
-(81, 9), -- Magnemite (Eléctrico)
-(82, 9), -- Magneton (Eléctrico)
-(83, 7), -- Farfetch'd (Normal)
-(83, 4), -- Farfetch'd (Volador)
-(84, 7), -- Doduo (Normal)
-(84, 4), -- Doduo (Volador)
-(85, 7), -- Dodrio (Normal)
-(85, 4), -- Dodrio (Volador)
-(86, 5), -- Seel (Agua)
-(87, 5), -- Dewgong (Agua)
-(87, 12), -- Dewgong (Hielo)
-(88, 2), -- Grimer (Veneno)
-(89, 2), -- Muk (Veneno)
-(90, 5), -- Shellder (Agua)
-(91, 5), -- Cloyster (Agua)
-(91, 12), -- Cloyster (Hielo)
-(92, 15), -- Gastly (Fantasma)
-(92, 2), -- Gastly (Veneno)
-(93, 15), -- Haunter (Fantasma)
-(93, 2), -- Haunter (Veneno)
-(94, 15), -- Gengar (Fantasma)
-(94, 2), -- Gengar (Veneno)
-(95, 14), -- Onix (Roca)
-(95, 8), -- Onix (Tierra)
-(96, 13), -- Drowzee (Psíquico)
-(97, 13), -- Hypno (Psíquico)
-(98, 8), -- Krabby (Tierra)
-(98, 5), -- Krabby (Agua)
-(99, 8), -- Kingler (Tierra)
-(99, 5), -- Kingler (Agua)
-(100, 9), -- Voltorb (Eléctrico)
-(101, 9), -- Electrode (Eléctrico)
-(102, 13), -- Exeggcute (Psíquico)
-(102, 1), -- Exeggcute (Planta)
-(103, 13), -- Exeggutor (Psíquico)
-(103, 1), -- Exeggutor (Planta)
-(104, 8), -- Cubone (Tierra)
-(105, 8), -- Marowak (Tierra)
-(106, 10), -- Hitmonlee (Lucha)
-(107, 10), -- Hitmonchan (Lucha)
-(108, 7), -- Lickitung (Normal)
-(109, 2), -- Koffing (Veneno)
-(110, 2), -- Weezing (Veneno)
-(111, 14), -- Rhyhorn (Roca)
-(111, 8), -- Rhyhorn (Tierra)
-(112, 14), -- Rhydon (Roca)
-(112, 8), -- Rhydon (Tierra)
-(113, 11), -- Chansey (Hada)
-(114, 1), -- Tangela (Planta)
-(115, 7), -- Kangaskhan (Normal)
-(116, 5), -- Horsea (Agua)
-(117, 5), -- Seadra (Agua)
-(118, 5), -- Goldeen (Agua)
-(119, 5), -- Seaking (Agua)
-(120, 5), -- Staryu (Agua)
-(121, 5), -- Starmie (Agua)
-(121, 13), -- Starmie (Psíquico)
-(122, 13), -- Mr. Mime (Psíquico)
-(123, 6), -- Scyther (Bicho)
-(123, 4), -- Scyther (Volador)
-(124, 12), -- Jynx (Hielo)
-(124, 13), -- Jynx (Psíquico)
-(125, 9), -- Electabuzz (Eléctrico)
-(126, 3), -- Magmar (Fuego)
-(127, 6), -- Pinsir (Bicho)
-(128, 7), -- Tauros (Normal)
-(129, 5), -- Magikarp (Agua)
-(130, 5), -- Gyarados (Agua)
-(130, 4), -- Gyarados (Volador)
-(131, 5), -- Lapras (Agua)
-(131, 12), -- Lapras (Hielo)
-(132, 7), -- Ditto (Normal)
-(133, 7), -- Eevee (Normal)
-(134, 5), -- Vaporeon (Agua)
-(135, 9), -- Jolteon (Eléctrico)
-(136, 3), -- Flareon (Fuego)
-(137, 7), -- Porygon (Normal)
-(138, 5), -- Omanyte (Agua)
-(138, 14), -- Omanyte (Roca)
-(139, 5), -- Omastar (Agua)
-(139, 14), -- Omastar (Roca)
-(140, 14), -- Kabuto (Roca)
-(140, 5), -- Kabuto (Agua)
-(141, 14), -- Kabutops (Roca)
-(141, 5), -- Kabutops (Agua)
-(142, 4), -- Aerodactyl (Volador)
-(142, 14), -- Aerodactyl (Roca)
-(143, 7), -- Snorlax (Normal)
-(144, 12), -- Articuno (Hielo)
-(144, 4), -- Articuno (Volador)
-(145, 9), -- Zapdos (Eléctrico)
-(145, 4), -- Zapdos (Volador)
-(146, 3), -- Moltres (Fuego)
-(146, 4), -- Moltres (Volador)
-(147, 17), -- Dratini (Dragón)
-(148, 17), -- Dragonair (Dragón)
-(149, 17), -- Dragonite (Dragón)
-(149, 4), -- Dragonite (Volador)
-(150, 13), -- Mewtwo (Psíquico)
-(151, 13); -- Mew (Psíquico)
+(25, 9),
+(26, 9),
+(27, 8),
+(28, 8),
+(29, 2),
+(30, 2),
+(31, 2),
+(31, 8),
+(32, 2),
+(33, 2),
+(34, 2),
+(34, 8),
+(35, 11),
+(36, 11),
+(37, 3),
+(38, 3),
+(39, 7),
+(39, 11),
+(40, 7),
+(40, 11),
+(41, 2),
+(41, 4),
+(42, 2),
+(42, 4),
+(43, 1),
+(43, 2),
+(44, 1),
+(44, 2),
+(45, 1),
+(45, 2),
+(46, 2),
+(46, 6),
+(47, 2),
+(47, 6),
+(48, 2),
+(48, 6),
+(49, 2),
+(49, 6),
+(50, 8),
+(51, 8),
+(52, 7),
+(53, 7),
+(54, 5),
+(55, 5),
+(56, 10),
+(57, 10),
+(58, 3),
+(59, 3),
+(60, 5),
+(61, 5),
+(62, 5),
+(62, 10),
+(63, 13),
+(64, 13),
+(65, 13),
+(66, 10),
+(67, 10),
+(68, 10),
+(69, 1),
+(69, 2),
+(70, 1),
+(70, 2),
+(71, 1),
+(71, 2),
+(72, 2),
+(72, 5),
+(73, 2),
+(73, 5),
+(74, 8),
+(74, 14),
+(75, 8),
+(75, 14),
+(76, 8),
+(76, 14),
+(77, 3),
+(78, 3),
+(79, 5),
+(79, 13),
+(80, 5),
+(80, 13),
+(81, 9),
+(82, 9),
+(83, 4),
+(83, 7),
+(84, 4),
+(84, 7),
+(85, 4),
+(85, 7),
+(86, 5),
+(87, 5),
+(87, 12),
+(88, 2),
+(89, 2),
+(90, 5),
+(91, 5),
+(91, 12),
+(92, 2),
+(92, 15),
+(93, 2),
+(93, 15),
+(94, 2),
+(94, 15),
+(95, 8),
+(95, 14),
+(96, 13),
+(97, 13),
+(98, 5),
+(98, 8),
+(99, 5),
+(99, 8),
+(100, 9),
+(101, 9),
+(102, 1),
+(102, 13),
+(103, 1),
+(103, 13),
+(104, 8),
+(105, 8),
+(106, 10),
+(107, 10),
+(108, 7),
+(109, 2),
+(110, 2),
+(111, 8),
+(111, 14),
+(112, 8),
+(112, 14),
+(113, 11),
+(114, 1),
+(115, 7),
+(116, 5),
+(117, 5),
+(118, 5),
+(119, 5),
+(120, 5),
+(121, 5),
+(121, 13),
+(122, 13),
+(123, 4),
+(123, 6),
+(124, 12),
+(124, 13),
+(125, 9),
+(126, 3),
+(127, 6),
+(128, 7),
+(129, 5),
+(130, 4),
+(130, 5),
+(131, 5),
+(131, 12),
+(132, 7),
+(133, 7),
+(134, 5),
+(135, 9),
+(136, 3),
+(137, 7),
+(138, 5),
+(138, 14),
+(139, 5),
+(139, 14),
+(140, 5),
+(140, 14),
+(141, 5),
+(141, 14),
+(142, 4),
+(142, 14),
+(143, 7),
+(144, 4),
+(144, 12),
+(145, 4),
+(145, 9),
+(146, 3),
+(146, 4),
+(147, 17),
+(148, 17),
+(149, 4),
+(149, 17),
+(150, 13),
+(151, 13);
 
 -- --------------------------------------------------------
 
@@ -413,23 +460,23 @@ CREATE TABLE `tipo` (
 --
 
 INSERT INTO `tipo` (`id`, `nombre`) VALUES
-(16, 'acero'),
-(5, 'agua'),
-(6, 'bicho'),
-(17, 'dragón'),
-(9, 'eléctrico'),
-(15, 'fantasma'),
-(3, 'fuego'),
-(11, 'hada'),
-(12, 'hielo'),
-(10, 'lucha'),
-(7, 'normal'),
-(1, 'planta'),
-(13, 'psíquico'),
-(14, 'roca'),
-(8, 'tierra'),
-(2, 'veneno'),
-(4, 'volador');
+(16, 'Acero'),
+(5, 'Agua'),
+(6, 'Bicho'),
+(17, 'Dragón'),
+(9, 'Eléctrico'),
+(15, 'Fantasma'),
+(3, 'Fuego'),
+(11, 'Hada'),
+(12, 'Hielo'),
+(10, 'Lucha'),
+(7, 'Normal'),
+(1, 'Planta'),
+(13, 'Psíquico'),
+(14, 'Roca'),
+(8, 'Tierra'),
+(2, 'Veneno'),
+(4, 'Volador');
 
 --
 -- Índices para tablas volcadas
@@ -463,7 +510,7 @@ ALTER TABLE `tipo`
 -- AUTO_INCREMENT de la tabla `pokemon`
 --
 ALTER TABLE `pokemon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo`
@@ -472,7 +519,6 @@ ALTER TABLE `tipo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- Restricciones para tablas volcadas
 -- Restricciones para tablas volcadas
 --
 
