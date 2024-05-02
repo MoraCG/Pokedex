@@ -8,14 +8,23 @@ input[type="checkbox"] {
     height: 1rem;
 }
 
+#imagenForm{
+    height: 8rem;
+}
+
 /* Estilos adicionales para dispositivos móviles */
 @media screen and (max-width: 1024px) {
     input[type="checkbox"] {
         width: 1.5rem;
         height: 1.5rem;
     }
+    #imagenForm{
+        height: 6rem;
+    }
 }
 
 @media screen and (max-width: 600px) {
-
+    #imagenForm{
+        height: 5rem;
+    }
 }

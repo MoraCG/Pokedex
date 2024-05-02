@@ -46,8 +46,8 @@ if ($conn->connect_error) {
     }
     echo '<form ' . $accion . ' method="post" enctype="multipart/form-data" class="w3-margin">
         <label for="fotoPokemon">Foto:</label>
-        <input type="file" name="fotoPokemon" id="fotoPokemon"><br>
-        <img src="pokemon/' . $imagen . '" alt="Imagen del Pokémon"><br>
+        <input type="file" name="fotoPokemon" id="fotoPokemon"><br><br>
+        <img src="pokemon/' . $imagen . '" alt="Imagen del Pokémon" id="imagenForm"><br>
         <label for="nombre">Nombre del pokémon:</label>
         <input type="text" name="nombre" id="nombre" value="' . $nombre . '"><br>
         <label for="numeroPokemon">Numero:</label>
