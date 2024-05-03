@@ -52,7 +52,7 @@ foreach ($tipos as $tipo) {
     $stmt->execute();
     $stmt->close();
 }
+header("location: paginaPrincipal.php");
+exit();
 // Cerrar la conexión
 $conn->close();
-header("location:/Pokedex/paginaPrincipal.php");
-exit();

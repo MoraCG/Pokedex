@@ -37,16 +37,14 @@ function buscarPokemon($buscador = "", $conn)
                 INNER JOIN pokemon_tipo ON pokemon.id = pokemon_tipo.pokemon_id 
                 INNER JOIN tipo ON pokemon_tipo.tipo_id = tipo.id 
                 WHERE pokemon.nombre LIKE '%$buscador%' 
-                GROUP BY pokemon.id 
-                LIMIT 151";
+                GROUP BY pokemon.id";
     } else {
         echo "<h2>Tabla de Pokémon</h2>";
         $sql = "SELECT pokemon.*, GROUP_CONCAT(tipo.nombre SEPARATOR ',') AS tipos 
                 FROM pokemon 
                 INNER JOIN pokemon_tipo ON pokemon.id = pokemon_tipo.pokemon_id 
                 INNER JOIN tipo ON pokemon_tipo.tipo_id = tipo.id 
-                GROUP BY pokemon.id 
-                LIMIT 151";
+                GROUP BY pokemon.id ";
     }
 
     $result = $conn->query($sql);

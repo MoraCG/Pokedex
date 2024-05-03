@@ -59,7 +59,7 @@ if ($conn->connect_error) {
         <input type="text" name="nombre" id="nombre" value="' . $nombre . '"><br>
         <label for="numeroPokemon">Numero:</label>
         <input type="number" id="numeroPokemon" name="numeroPokemon" value="' . $numero . '"><br>
-        <label for="tipoPokemon">Tipo de pokémon</label><br>';
+        <label>Tipo de pokémon</label><br>';
 
     $tipos_disponibles = ["Normal", "Fuego", "Agua", "Planta", "Eléctrico", "Hielo", "Lucha", "Veneno", "Tierra", "Volador", "Psíquico", "Bicho", "Roca", "Fantasma", "Dragón"];
     foreach ($tipos_disponibles as $tipo_disponible) {

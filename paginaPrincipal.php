@@ -96,7 +96,6 @@ if(isset($_GET["error"])){
         case 5:
             echo"<div style='color:white;background-color:red'>ERROR AL EDITAR EL POKEMON</div>";
             break;
-
     }
 }
 include "ConsultarBdPokemon.php";
@@ -105,7 +104,5 @@ if (isset($_SESSION["usuario"])) {
 }
 include "footer.html";
 ?>
-
-
 </body>
 </html>
