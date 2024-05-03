@@ -18,7 +18,6 @@ $descripcion = $_POST['descripcion'];
 $tipos = isset($_POST['tipos']) ? $_POST['tipos'] : array();
 //------------------------------------------------------------------------
 
-
 // Directorio donde se almacenarán las imágenes
 $directorio_destino = 'pokemon/';
 
@@ -29,28 +28,11 @@ if (isset($_FILES['fotoPokemon'])) {
     $archivo_tamaño = $_FILES['fotoPokemon']['size'];
     $archivo_error = $_FILES['fotoPokemon']['error'];
 
-
-
         // Mueve el archivo cargado al directorio de destino
         $ruta_destino = $directorio_destino . $archivo_nombre;
         move_uploaded_file($archivo_temporal, $ruta_destino);
-
-
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-// Insertar el nuevo Pokémon en la tabla pokemon
 // Insertar el nuevo Pokémon en la tabla pokemon
 $sql = "INSERT INTO pokemon (imagen, nombre, numero, descripcion) VALUES (?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
@@ -63,7 +45,6 @@ $stmt->close();
 foreach ($tipos as $tipo) {
     // Obtener el ID del tipo
     $tipo_id = obtenerIdTipo($conn, $tipo);
-
     // Insertar la relación en la tabla pokemon_tipo
     $sql = "INSERT INTO pokemon_tipo (pokemon_id, tipo_id) VALUES (?, ?)";
     $stmt = $conn->prepare($sql);
@@ -71,17 +52,7 @@ foreach ($tipos as $tipo) {
     $stmt->execute();
     $stmt->close();
 }
-
-
-
-
-
-
-
-
 // Cerrar la conexión
 $conn->close();
-
-header("location:paginaPrincipal.php");
-
+header("location:/Pokedex/paginaPrincipal.php");
 exit();
