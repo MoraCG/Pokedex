@@ -8,27 +8,20 @@ $Database = configuration::Database();
 
 
 
-// Perform Pokemon search based on GET parameter 'buscador'
+
 if (isset($_GET['buscador'])) {
     $buscador = $_GET['buscador'];
     $pokemonData = $Database->searchPokemon($buscador);
 } else {
-    // If no search term provided, fetch all Pokemon data
+
     $pokemonData = $Database->searchPokemon();
 }
 
-// Now you can use $pokemonData to display the results as needed
-// Example:
-
 
 //---------------------------------------------------
 
 
 
-//---------------------------------------------------
-
-
-// Display the Pokemon data
 if (!empty($pokemonData)) {
     echo "<div class='w3-margin'>";
     echo "<table class='w3-table w3-bordered'>";
@@ -80,7 +73,7 @@ if (!empty($pokemonData)) {
     echo "</div>";
 } else {
     echo "No se encontraron Pokémon que coincidan con '$buscador'.";
-    // Optionally, display the full table if no search term is provided
+    $pokemonData = $Database->searchPokemon();
 
 }
 
