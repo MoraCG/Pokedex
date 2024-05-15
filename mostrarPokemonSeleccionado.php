@@ -37,12 +37,12 @@ function mostrarPokemonSeleccionado($id)
     // Imprimir la sección del Pokémon
     echo '<section class="w3-center" id="contenedorInfo">
     <div class="w3-margin" id="imagenInfo">
-        <img src="pokemon/' . $imagen . '" alt="Imagen Pokémon seleccionado" id="imgVisualizacion">
+        <img src="img/pokemon/' . $imagen . '" alt="Imagen Pokémon seleccionado" id="imgVisualizacion">
     </div>
     <div class="w3-margin" id="info">
         <div id="tipoNombre">';
     while ($rowTipo = $resultTipos->fetch_assoc()) {
-        echo '<img src="TipoPokemon/tipo_' . $rowTipo["nombre"] . '_icono.png" alt="Tipo" id="imgTipo">';
+        echo '<img src="img/TipoPokemon/tipo_' . $rowTipo["nombre"] . '_icono.png" alt="Tipo" id="imgTipo">';
     }
 
     echo '<h2 class="titulo">| ' . $nombre . '</h2>

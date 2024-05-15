@@ -40,7 +40,7 @@ if (!empty($pokemonData)) {
 
     foreach ($pokemonData as $row) {
         echo "<tr>";
-        echo "<td><img src='pokemon/" . $row["imagen"] . "' alt='imagen' class='imagenTabla' style='width: 64px; height: auto;'></td>";
+        echo "<td><img src='img/pokemon/" . $row["imagen"] . "' alt='imagen' class='imagenTabla' style='width: 64px; height: auto;'></td>";
 
         // Mostrar las imágenes para los tipos
         echo "<td>"; // Apertura de celda para imágenes de tipo
@@ -48,7 +48,7 @@ if (!empty($pokemonData)) {
 
         foreach ($tipos as $tipo) {
             // Mostrar la imagen para cada tipo
-            echo "<img src='TipoPokemon/tipo_" . trim($tipo) . ".png' alt='" . trim($tipo) . "' style='width: auto; height: auto;' />";
+            echo "<img src='img/TipoPokemon/tipo_" . trim($tipo) . ".png' alt='" . trim($tipo) . "' style='width: auto; height: auto;' />";
         }
 
         echo "</td>"; // Cierre de celda para imágenes de tipo

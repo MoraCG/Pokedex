@@ -5,7 +5,7 @@ class Configuration
 
     private static function getConfig()
     {
-        return parse_ini_file("config.ini");
+        return parse_ini_file("config/config.ini");
     }
 
     public static function Database(){
