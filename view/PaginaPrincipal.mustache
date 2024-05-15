@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="/view/style/estilosVistas.css">
+    <link rel="icon" href="/img/pokebolaLogo.png" type="image/png">
+    <title>Home</title>
+</head>
+
+<body class="w3-light-grey">
+
+<div class="w3-container w3-center" id="contenedorHeader">
+    <div id="header">
+
+    </div>
+    <div id="user">
+
+        <!--aca estaba el php de user-->
+
+    </div>
+</div>
+
+<div class="w3-container w3-margin">
+    <form action="#" method="get" class="inputsBuscar">
+        <label for="buscador" id="labelBuscador">Ingrese nombre, tipo o numero de pokémon:</label>
+        <div id="inputs" class="w3-center">
+            <input type="text" name="buscador" id="buscador">
+            <input type="submit" name="buscar" id="buscar" value="¿Quién es ese pokemon?">
+        </div>
+    </form>
+</div>
+
+<div class='w3-margin'>
+    <table class='w3-table w3-bordered'>
+        <thead>
+        <tr class='w3-dark-grey'>
+            <th>Imagen</th>
+            <th>Tipo</th>
+            <th>Número</th>
+            <th>Nombre</th>
+            {{#session_usuario}}
+            <th>Modificaciones</th>
+            {{/session_usuario}}
+        </tr>
+        </thead>
+        <tbody>
+        {{#pokemonData}}
+        <tr>
+            <td><img src='/img/pokemon/{{imagen}}' alt='imagen' class='imagenTabla' style='width: 64px; height: auto;'></td>
+            <td>
+                {{#tipos}}
+                <img src='/img/TipoPokemon/tipo_{{.}}.png' alt='{{.}}' style='width: auto; height: auto;' />
+                {{/tipos}}
+            </td>
+            <td>{{numero}}</td>
+            <td><a href='/paginaDeVisualizacion.php?id={{id}}'>{{nombre}}</a></td>
+            {{#session_usuario}}
+            <td class='btn-group'>
+                <form action='eliminar.php' method='post' style='display: inline-block;'>
+                    <button type='submit' name='eliminar' value='{{id}}' class='btn btn-danger'>Eliminar</button>
+                </form>
+                <form action='/formDeCreaciónEdición.php' method='get' style='display: inline-block;'>
+                    <button type='submit' name='editar' value='{{id}}' class='btn'>Editar</button>
+                </form>
+            </td>
+            {{/session_usuario}}
+        </tr>
+        {{/pokemonData}}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
+

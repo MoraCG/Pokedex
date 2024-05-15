@@ -9,7 +9,8 @@ session_start();
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="style/estilosVistas.css">
+    <link rel="stylesheet" href="view/style/estilosVistas.css">
+    <link rel="stylesheet" href="view/style/Principal.css">
     <link rel="icon" href="/img/pokebolaLogo.png" type="image/png">
     <title>Home</title>
 </head>
@@ -17,7 +18,7 @@ session_start();
 
 <div class="w3-container w3-center" id="contenedorHeader">
     <div id="header">
-        <?php include "header.html"; ?>
+
     </div>
     <div id="user">
         <?php
@@ -53,30 +54,7 @@ session_start();
     </form>
 </div>
 
-<style>
-    .btn {
-        background-color: #4CAF50; /* Verde */
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 12px;
-    }
 
-    .btn-danger {
-        background-color: #f44336; /* Rojo para botones de eliminación */
-    }
-
-    .btn-group {
-        display: inline-flex;
-        gap: 10px; /* Espaciado entre botones */
-    }
-</style>
 
 <?php
 if(isset($_GET["error"])){
@@ -102,7 +80,7 @@ include "ConsultarBdPokemon.php";
 if (isset($_SESSION["usuario"])) {
     echo "<form action='formDeCreaciónEdición.php' method='get' class='w3-center'><button type='submit' name='editar' id='crearPokemon' value='0'>Crear Pokémon</button></form>";
 }
-include "footer.html";
+
 ?>
 </body>
 </html>
