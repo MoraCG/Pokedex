@@ -3,16 +3,21 @@
 class PokedexController
 {
         private  $model;
-    public function __construct( $model)
+        private $presenter;
+
+    public function __construct( $model,$presenter)
     {
         $this-> model=$model;
+        $this->presenter = $presenter;
     }
 
-    public function getList()
+    public function get()
     {
 
-        include_once ("paginaPrincipal.php");
         $pokemonData = $this->model->getPokemonData();
-        mostrarPokemon($pokemonData);
+        $this->presenter->render("paginaPrincipal.php",["pokemons"=>$pokemonData]);
+
+
+
     }
 }

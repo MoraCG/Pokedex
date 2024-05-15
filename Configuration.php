@@ -1,9 +1,10 @@
 <?php
 include_once ("Model/PokemonModel.php");
 include_once ("Helper/DataBase.php");
-include_once("view/header.html");
-include_once("view/footer.html");
+
 include_once ("Controller/PokedexController.php");
+include_once ("Helper/Router.php");
+include_once ("Helper/presenter.php");
 
 class Configuration
 {
@@ -20,9 +21,9 @@ class Configuration
 
     public static function GetPokedexController()
     {
-        $model =self::getPokemonModel();
 
-        return new PokedexController( $model);
+
+        return new PokedexController( self::getPokemonModel(),self::getPresenter());
     }
 
     private static function getPokemonModel()
@@ -30,6 +31,13 @@ class Configuration
     {
         return new PokemonModel(self::Database());
     }
+    public static function getRouter(){
+        return new Router();
+    }
 
+    private static function getPresenter()
+    {
+        return new Presenter();
+    }
 
 }
