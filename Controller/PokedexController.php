@@ -15,7 +15,7 @@ class PokedexController
     {
 
         $pokemonData = $this->model->getPokemonData();
-        $this->presenter->render("paginaPrincipal.php",["pokemons"=>$pokemonData]);
+        $this->presenter->render("view/PaginaPrincipalView.mustache",["pokemons"=>$pokemonData]);
 
 
 

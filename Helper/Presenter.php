@@ -10,9 +10,9 @@ class Presenter
 
     public function render($pagina,$pokemonData)
     {
-         include_once("view/header.html");
+         include_once("view/header.mustache");
          include_once ($pagina);
          mostrarPokemon($pokemonData["pokemons"]);
-         include_once("view/footer.html");
+         include_once("view/footer.mustache");
     }
 }

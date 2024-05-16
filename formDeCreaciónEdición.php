@@ -20,7 +20,7 @@ $conn = new mysqli("localhost", "root", "", "test");
 if ($conn->connect_error) {
     die("La conexión falló: " . $conn->connect_error);
 } else {
-    include 'header.html';
+    include 'header.mustache';
     $editar = isset($_GET['editar']) ? floatval($_GET['editar']) : 0;
     $accion = "";
     $fila = '';
@@ -73,7 +73,7 @@ if ($conn->connect_error) {
         <input type="submit" value="Enviar" name="submit">
     </form>';
 
-    include 'footer.html';
+    include 'footer.mustache';
 }
 // Cerrar conexión
 $conn->close();
