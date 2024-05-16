@@ -19,19 +19,14 @@ class Router
                 break;
 
             case 'PaginaDeCreacion':
-
                 $paginaDeCreacionController = Configuration::GetPaginaDeCreacionController();
-                $id = $_GET['id']??'';
-                if ($id==='') {
-
+                $id = $_GET['id'];
+                if ( $id ==='') {
                     $paginaDeCreacionController->get();
-                }
-
-
-
-                else {
+                } else {
                     $paginaDeCreacionController->editar($id);
                 }
+                break;
 
 
                 break;

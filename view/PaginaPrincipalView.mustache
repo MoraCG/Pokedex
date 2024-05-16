@@ -73,12 +73,21 @@
                                    <td><a href='index.php?controller=PaginaDeVisualizacion&action=ver&id={{id}}'>{{nombre}}</a></td>
 
                                    <td class='btn-group'>
-                                       <form action='eliminar.php' method='post' style='display: inline-block;'>
-                                           <button type='submit' name='eliminar' value='{{id}}' class='btn btn-danger'>Eliminar</button>
-                                       </form>
-                                       <form action='index.php?controller=PaginaDeCreacion&action=ver&id={{id}}' method='get' style='display: inline-block;'>
-                                           <button type='submit' name='editar' value='{{id}}' class='btn'>Editar</button>
-                                       </form>
+
+                                       <button type='submit' name='controller' value='PaginaDeCreacion' class='btn btn-danger'>
+                                           <a href='index.php?controller=PaginaDePrincipal&id=""' style='text-decoration: none; color: inherit;'>
+                                               Eliminar
+                                           </a>
+                                       </button>
+
+                                       <button type='submit' name='controller' value='PaginaDeCreacion' class='btn'>
+                                           <a href='index.php?controller=PaginaDeCreacion&id=""' style='text-decoration: none; color: inherit;'>
+                                               Editar
+                                           </a>
+                                       </button>
+
+
+                                       <input type='hidden' name='id' value='{{id}}'>
                                    </td>
 
                                </tr>
@@ -96,10 +105,13 @@
                        {{/error}}
 
 
-                       <form action='index.php?controller=PaginaDeCreacion&action=ver&id=' method='get' class='w3-center'>
-                           <button type='submit' name='editar' id='crearPokemon' value='0'>Crear Pokémon</button>
+                       <form action='index.php' method='get' style='display: inline-block;'>
+                           <button type='submit' name='controller' value='PaginaDeCreacion'>
+                               <a href='index.php?controller=PaginaDeCreacion&id=""' style='text-decoration: none; color: inherit;'>
+                                   Crear
+                               </a>
+                           </button>
+                           <input type='hidden' name='id' value='{{id}}'>
                        </form>
-
-
                        </body>
                        </html>

@@ -17,6 +17,7 @@ class PaginaDeCreacionController
     {
         $this->presenter->render("view/PaginaCreacionView.mustache");
     }
+
     public function editar($id)
     {
 
