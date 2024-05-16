@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="style/estilosVistas.css">
+    <link rel="stylesheet" href="style/Principal.css">
+    <link rel="icon" href="/img/pokebolaLogo.png" type="image/png">
+    <title>Home</title>
+</head>
+<body class="w3-light-grey">
+<h2>{{titulo_formulario}}</h2>
+{{#pokemonData}}
+<form action="{{form_action}}" method="post" enctype="multipart/form-data" class="w3-margin">
+    <label for="fotoPokemon">Foto:</label>
+    <input type="file" name="fotoPokemon" id="fotoPokemon"><br><br>
+    {{#imagen}}
+    <img src="pokemon/{{imagen}}" alt="Imagen del Pokémon" id="imagenForm"><br>
+    {{/imagen}}
+
+    <label for="nombre">Nombre del pokémon:</label>
+    <input type="text" name="nombre" id="nombre" value="{{nombre}}"><br>
+
+    <label for="numeroPokemon">Número:</label>
+    <input type="number" id="numeroPokemon" name="numeroPokemon" value="{{numero}}"><br>
+
+    <label>Tipo de pokémon</label><br>
+    {{#tipos_disponibles}}
+    <label>
+        <input type="checkbox" name="tipos[]" value="{{tipo}}" {{#checked}}checked{{/checked}}>
+        {{tipo}}
+    </label><br>
+    {{/tipos_disponibles}}
+
+    <label for="descripcion">Una breve descripción:</label><br>
+    <textarea name="descripcion" id="descripcion" cols="20" rows="3">{{descripcion}}</textarea><br>
+
+    <input type="submit" value="Enviar" name="submit">
+</form>
+{{/pokemonData}}
+
+</body>
+</html>

@@ -18,6 +18,23 @@ class Router
                 $paginaDeVisualizacionController->get($id);
                 break;
 
+            case 'PaginaDeCreacion':
+
+                $paginaDeCreacionController = configuration::GetPaginaDeCreacionController();
+                $id = $_GET['id']??'';
+                if ($id==='') {
+
+                    $paginaDeCreacionController->get();
+                }
+
+
+
+                else {
+                    $paginaDeCreacionController->editar($id);
+                }
+
+
+                break;
             default:
 
                 $PokedexController=configuration::GetPokedexController();

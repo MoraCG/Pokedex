@@ -16,7 +16,7 @@ class PokedexController
 
         $pokemonData = $this->model->getPokemonData();
         //var_dump(  $pokemonData);
-        //aca hay un error q no muestra nada y pokemon data si tiene cosas
+
         $this->presenter->render("view/paginaPrincipalView.mustache",["pokemonData" => $pokemonData]);
 
 
