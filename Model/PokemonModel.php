@@ -22,20 +22,18 @@ class PokemonModel
 
     }
     public function searchPokemon($searchTerm = "") {
-        $sql = "SELECT pokemon.*, GROUP_CONCAT(tipo.nombre SEPARATOR ',') AS tipos 
+        $sql = "SELECT pokemon.*
         FROM pokemon 
         INNER JOIN pokemon_tipo ON pokemon.id = pokemon_tipo.pokemon_id 
-        INNER JOIN tipo ON pokemon_tipo.tipo_id = tipo.id ";
+        INNER JOIN tipo ON pokemon_tipo.tipo_id = tipo.id";
 
         if ($searchTerm !== null) {
-            $sql .= "WHERE pokemon.nombre LIKE '%{$searchTerm}%' ";
+            $sql .= " WHERE pokemon.nombre LIKE '%{$searchTerm}%'";
         }
 
-        $sql .= "GROUP BY pokemon.id";
+        $sql .= " GROUP BY pokemon.id";
 
-        return   $this->database->query($sql);
-
-
+        return $this->database->query($sql);
 
 
             }

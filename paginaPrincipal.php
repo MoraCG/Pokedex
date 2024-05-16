@@ -118,7 +118,7 @@ function mostrarPokemon($pokemonData)
             echo "</td>"; // Cierre de celda para imágenes de tipo
 
             echo "<td>" . $row["numero"] . "</td>";
-            echo "<td><a href='paginaDeVisualizacion.php?id=" . $row["id"] . "'>" . $row["nombre"] . "</a></td>";
+            echo  "<td><a href='/index.php?controller=paginaDeVisualizacion&id=" . $row["id"] . "'>" . $row["nombre"] . "</a></td>";
             if (isset($_SESSION["usuario"])) {
                 echo "<td class='btn-group'>"; // Contenedor para los botones
                 echo "<form action='eliminar.php' method='post' style='display: inline-block;'>";

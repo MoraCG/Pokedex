@@ -12,6 +12,7 @@ class Router
     {
         switch ($controller){
 
+
             default:
 
                 $PokedexController=configuration::GetPokedexController();

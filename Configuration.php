@@ -1,10 +1,10 @@
 <?php
 include_once ("Model/PokemonModel.php");
 include_once ("Helper/DataBase.php");
-
+include_once ("Controller/PaginaDeVisualizacionController.php");
 include_once ("Controller/PokedexController.php");
 include_once ("Helper/Router.php");
-include_once ("Helper/presenter.php");
+
 include_once ("Helper/MustachePresenter.php");
 include_once ("vendor/mustache/src/Mustache/Autoloader.php");
 
@@ -20,14 +20,19 @@ class Configuration
      $config = self::getConfig();
      return new Database($config["servername"], $config["username"], $config["database"], $config["password"]);
  }
-
+    //controller
     public static function GetPokedexController()
     {
-
-
         return new PokedexController( self::getPokemonModel(),self::getPresenter());
     }
+    public static function GetPaginaDeVisualizacionController()
+    {
+        return new PaginaDeVisualizacionController( self::getPokemonModel(),self::getPresenter());
+    }
 
+
+
+    //model
     private static function getPokemonModel()
 
     {
@@ -39,8 +44,9 @@ class Configuration
 
     private static function getPresenter()
     {
-        //falta cambiar el presenter por un presenter mustache
-        return new Presenter();
+
+        return new MustachePresenter("view/template");
     }
+
 
 }

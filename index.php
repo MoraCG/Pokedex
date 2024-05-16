@@ -4,8 +4,8 @@ include_once ("Configuration.php");
 
 
 
-$controller = isset($_GET['controller']) ? $_GET['controller'] : '';
-$action = isset($_GET['action']) ? $_GET['action'] : '';
+$controller = $_GET['controller'] ?? '';
+$action = $_GET['action'] ?? 'get';
 
 $router =configuration::getRouter();
 $router->route($controller,$action);

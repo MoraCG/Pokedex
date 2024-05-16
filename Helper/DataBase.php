@@ -13,14 +13,14 @@ class Database
         }
     }
 
-    public function query($sql){
-        $result = mysqli_query($this->conn, $sql);
-        return mysqli_fetch_all($result, MYSQLI_ASSOC);
-    }
+        public function query($sql){
+            $result = mysqli_query($this->conn, $sql);
+            return mysqli_fetch_all($result, MYSQLI_ASSOC);
+        }
 
     public function execute($sql)
     {
-        mysqli_query($this->conn, $sql);
+        return mysqli_query($this->conn, $sql);
     }
 
 
