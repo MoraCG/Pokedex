@@ -12,6 +12,11 @@ class Router
     {
         switch ($controller){
 
+            case 'PaginaDeVisualizacion':
+                $id = $_GET['id'];
+                $paginaDeVisualizacionController = configuration::GetPaginaDeVisualizacionController();
+                $paginaDeVisualizacionController->get($id);
+                break;
 
             default:
 

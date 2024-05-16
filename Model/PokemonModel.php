@@ -2,10 +2,11 @@
 
 class PokemonModel
 {
-        private $database;
+    private $database;
+
     public function __construct($database)
     {
-        $this->database=$database;
+        $this->database = $database;
     }
 
     public function getPokemonData()
@@ -21,7 +22,9 @@ class PokemonModel
         }
 
     }
-    public function searchPokemon($searchTerm = "") {
+
+    public function searchPokemon($searchTerm = "")
+    {
         $sql = "SELECT pokemon.*
         FROM pokemon 
         INNER JOIN pokemon_tipo ON pokemon.id = pokemon_tipo.pokemon_id 
@@ -36,9 +39,21 @@ class PokemonModel
         return $this->database->query($sql);
 
 
-            }
-        }
+    }
 
 
+    public function buscarPokemonId($id)
+    {
 
 
+        // Crear la consulta SQL para obtener el Pokémon por ID
+        $sql = "SELECT pokemon.*, tipo.nombre AS tipo_nombre 
+            FROM pokemon 
+            INNER JOIN pokemon_tipo ON pokemon.id = pokemon_tipo.pokemon_id 
+            INNER JOIN tipo ON pokemon_tipo.tipo_id = tipo.id 
+            WHERE pokemon.id = {$id}";
+
+        return $this->database->query($sql);
+    }
+
+}

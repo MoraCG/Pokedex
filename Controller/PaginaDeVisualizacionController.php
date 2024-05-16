@@ -17,8 +17,8 @@ class PaginaDeVisualizacionController
     public function get($id)
     {
 
-        $pokemonData = $this->model->BuscaPokemonid($id);
-        $this->presenter->render("paginaPrincipal.php",["pokemons"=>$pokemonData]);
+        $pokemonData = $this->model->buscarPokemonId($id);
+        $this->presenter->render("view/PaginaDeVisualizacionView.mustache",["pokemonData"=>$pokemonData]);
 
 
 
