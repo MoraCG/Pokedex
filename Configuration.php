@@ -39,7 +39,8 @@ class Configuration
 
     private static function getPresenter()
     {
-        return new MustachePresenter("view/template");
+        //falta cambiar el presenter por un presenter mustache
+        return new Presenter();
     }
 
 }

@@ -12,9 +12,9 @@
 </head>
 <body class="w3-light-gray">
 <?php
-include "header.mustache";
+include "view/template/header.mustache";
 include 'mostrarPokemonSeleccionado.php';
-include "footer.mustache";
+include "view/template/footer.mustache";
 ?>
 </body>
 </html>
