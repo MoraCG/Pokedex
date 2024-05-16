@@ -14,13 +14,13 @@ class Router
 
             case 'PaginaDeVisualizacion':
                 $id = $_GET['id'];
-                $paginaDeVisualizacionController = configuration::GetPaginaDeVisualizacionController();
+                $paginaDeVisualizacionController = Configuration::GetPaginaDeVisualizacionController();
                 $paginaDeVisualizacionController->get($id);
                 break;
 
             case 'PaginaDeCreacion':
 
-                $paginaDeCreacionController = configuration::GetPaginaDeCreacionController();
+                $paginaDeCreacionController = Configuration::GetPaginaDeCreacionController();
                 $id = $_GET['id']??'';
                 if ($id==='') {
 
@@ -37,7 +37,7 @@ class Router
                 break;
             default:
 
-                $PokedexController=configuration::GetPokedexController();
+                $PokedexController=Configuration::GetPokedexController();
 
                 $PokedexController->get();
 
