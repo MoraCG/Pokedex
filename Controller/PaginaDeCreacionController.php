@@ -15,7 +15,7 @@ class PaginaDeCreacionController
 
     public function get($id)
     {
-        if ($id === '') {
+        if ($id === 'nuevo') {
 
             $this->presenter->render("view/PaginaCreacionView.mustache");
         } else {
@@ -27,10 +27,11 @@ class PaginaDeCreacionController
     {
 
         $pokemonData = $this->model->buscarPokemonId($id);
-        $this->presenter->render("view/PaginaCreacionView.mustache", ["pokemonData" => $pokemonData]);
+       // var_dump($pokemonData );
+        $this->presenter->render("view/PaginaEdicionView.mustache", ["pokemonData" => $pokemonData]);
     }
 
-    public function store()
+    public function insertar()
     {
 
         $nombre = $_POST['nombre'];
@@ -39,8 +40,9 @@ class PaginaDeCreacionController
         $tipos = isset($_POST['tipos']) ? $_POST['tipos'] : array();
 
 
-        $directorio_destino = 'img/pokemon/';
 
+
+        $directorio_destino = 'img/pokemon/';
 
         if (isset($_FILES['fotoPokemon'])) {
             $archivo_nombre = $_FILES['fotoPokemon']['name'];
@@ -51,18 +53,12 @@ class PaginaDeCreacionController
 
             $ruta_destino = $directorio_destino . $archivo_nombre;
             move_uploaded_file($archivo_temporal, $ruta_destino);
-        } else {
-            $archivo_nombre = null;
         }
 
 
         $pokemon_id = $this->model->insertarPokemon($archivo_nombre, $nombre, $numero, $descripcion);
-
-
         foreach ($tipos as $tipo) {
-
             $tipo_id = $this->model->obtenerIdTipo( $tipo);
-
             $this->model->insertarTipoPokemon($pokemon_id, $tipo_id);
         }
 
@@ -72,10 +68,10 @@ class PaginaDeCreacionController
     }
 
 
-
-
-
-
-
-
+    public function editarPokemon()
+    {
+        $id_a_eliminar = $_POST['id'];
+        $this->model->eliminarPokemon($id_a_eliminar);
+        $this->insertar();
+    }
 }

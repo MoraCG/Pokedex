@@ -14,7 +14,7 @@ class PokedexController
     public function get()
     {
 
-        // Verificar si se ha solicitado la eliminación de un Pokémon
+
         if (isset($_GET['eliminar'])) {
             $id_a_eliminar = $_GET['eliminar'];
 

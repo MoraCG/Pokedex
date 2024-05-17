@@ -23,11 +23,13 @@ class Router
 
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+                    $paginaDeCreacionController->insertar();
 
-                    $paginaDeCreacionController->store();
+
                 } else {
 
                     $id = $_GET['id'];
+                    // var_dump($id);
                     $paginaDeCreacionController->get($id);
                 }
                 break;

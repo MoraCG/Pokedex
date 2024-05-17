@@ -16,11 +16,12 @@
 <h2>Pagina creacion y edicion que no se ve</h2>
 
 
-<form action="{{form_action}}" method="post" enctype="multipart/form-data" class="w3-margin">
-
+<form action="index.php?controller=PaginaDeCreacion&method=editarpokemon" method="post" enctype="multipart/form-data" class="w3-margin">
+            {{#pokemonData}}
     <label for="fotoPokemon">Foto:</label>
-    <input type="file" name="fotoPokemon" id="fotoPokemon"><br><br>
+    <input type="file" name="fotoPokemon" id="fotoPokemon" value="img/pokemon/{{imagen}}"><br><br>
 
+    <label> {{id}} </label>
     <!-- Si hay una imagen, muestra la etiqueta de imagen -->
     {{#imagen}}
     <img src="img/pokemon/{{imagen}}" alt="Imagen del Pokémon" id="imagenForm"><br>
@@ -42,7 +43,7 @@
 
     <label for="descripcion">Una breve descripción:</label><br>
     <textarea name="descripcion" id="descripcion" cols="20" rows="3">{{descripcion}}</textarea><br>
-
+    {{/pokemonData}}
     <input type="submit" value="Enviar" name="submit">
 </form>
 
