@@ -44,8 +44,6 @@ class PokemonModel
 
     public function buscarPokemonId($id)
     {
-
-        // Crear la consulta SQL para obtener el Pokémon por ID
         $sql = "SELECT pokemon.*, tipo.nombre AS tipo_nombre 
             FROM pokemon 
             LEFT JOIN pokemon_tipo ON pokemon.id = pokemon_tipo.pokemon_id 

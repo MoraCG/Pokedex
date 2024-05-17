@@ -2,9 +2,6 @@
 
 class PaginaDeVisualizacionController
 {
-
-
-
     private $presenter;
     private $model;
 

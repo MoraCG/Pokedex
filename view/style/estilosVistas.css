@@ -5,8 +5,11 @@ input, button {
 }
 
 #crearPokemon {
-    width: 70%;
+    width: 100%;
     background-color: #ababab;
+    padding: 10px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
 }
 
 textarea {

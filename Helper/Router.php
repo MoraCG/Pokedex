@@ -29,27 +29,15 @@ class Router
                 } else {
 
                     $id = $_GET['id'];
-                    // var_dump($id);
                     $paginaDeCreacionController->get($id);
                 }
-                break;
-
-
                 break;
             default:
 
                 $PokedexController=Configuration::GetPokedexController();
 
                 $PokedexController->get();
-
-
-
                 break;
-
-
         }
-
-
-
     }
 }
