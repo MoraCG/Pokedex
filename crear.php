@@ -1,15 +1,5 @@
 <?php
-$servername = "localhost"; // Host de la base de datos
-$username = "root"; // Nombre de usuario
-$password = ""; // Contraseña predeterminada de MySQL en XAMPP
-$database = "test"; // Nombre de la base de datos que quieres conectar
-require_once 'funciones.php';
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $database);
 
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
 
 // Recibir datos del formulario
 $nombre = $_POST['nombre'];
@@ -52,7 +42,7 @@ foreach ($tipos as $tipo) {
     $stmt->execute();
     $stmt->close();
 }
-header("location: paginaPrincipal.php");
+
 exit();
-// Cerrar la conexión
-$conn->close();
+
+

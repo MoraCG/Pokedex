@@ -14,12 +14,23 @@ class PokedexController
     public function get()
     {
 
+        // Verificar si se ha solicitado la eliminación de un Pokémon
+        if (isset($_GET['eliminar'])) {
+            $id_a_eliminar = $_GET['eliminar'];
+
+
+            if ($this->model->eliminarPokemon($id_a_eliminar)) {
+
+            } else {
+
+            }
+        }
+
+
         $pokemonData = $this->model->getPokemonData();
-        //var_dump(  $pokemonData);
-
-        $this->presenter->render("view/paginaPrincipalView.mustache",["pokemonData" => $pokemonData]);
+        //var_dump($pokemonData);
 
 
-
+        $this->presenter->render("view/paginaPrincipalView.mustache", ["pokemonData" => $pokemonData]);
     }
 }

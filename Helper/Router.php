@@ -20,11 +20,15 @@ class Router
 
             case 'PaginaDeCreacion':
                 $paginaDeCreacionController = Configuration::GetPaginaDeCreacionController();
-                $id = $_GET['id'];
-                if ( $id ==='') {
-                    $paginaDeCreacionController->get();
+
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+
+                    $paginaDeCreacionController->store();
                 } else {
-                    $paginaDeCreacionController->editar($id);
+
+                    $id = $_GET['id'];
+                    $paginaDeCreacionController->get($id);
                 }
                 break;
 
@@ -35,6 +39,7 @@ class Router
                 $PokedexController=Configuration::GetPokedexController();
 
                 $PokedexController->get();
+
 
 
                 break;
