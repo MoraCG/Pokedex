@@ -54,9 +54,7 @@
                                    <th>Tipo</th>
                                    <th>Número</th>
                                    <th>Nombre</th>
-
                                    <th>Modificaciones</th>
-
                                </tr>
                                </thead>
                                <tbody>
@@ -66,7 +64,7 @@
                                    <td><img src='img/pokemon/{{imagen}}' alt='imagen' class='imagenTabla' style='width: 64px; height: auto;'></td>
                                    <td>
                                        {{#tipos}}
-                                       <img src='img/TipoPokemon/tipo_{{tipo}}_icono.png' alt='{{.}}' style='width: auto; height: auto;' />
+                                       <img src='img/TipoPokemon/tipo_{{tipo}}.png' alt='{{.}}' />
                                        {{/tipos}}
                                    </td>
                                    <td>{{numero}}</td>
@@ -81,7 +79,7 @@
                                        </button>
 
                                        <button type='submit' name='controller' value='PaginaDeCreacion' class='btn'>
-                                           <a href='index.php?controller=PaginaDeCreacion&id={{id}}' style='text-decoration: none; color: inherit;'>
+                                           <a href='index.php?controller=PaginaDeCreacion&id={{id}}&tipo=Editar' style='text-decoration: none; color: inherit;'>
                                                Editar
                                            </a>
                                        </button>
@@ -89,7 +87,6 @@
 
                                        <input type='hidden' name='id' value='{{id}}'>
                                    </td>
-
                                </tr>
                              {{/pokemonData}}
                                </tbody>
@@ -104,10 +101,8 @@
                        </div>
                        {{/error}}
 
-
-
                            <button type='submit' name='controller' value='PaginaDeCreacion'>
-                               <a href='index.php?controller=PaginaDeCreacion&id=nuevo' style='text-decoration: none; color: inherit;'>
+                               <a href='index.php?controller=PaginaDeCreacion&id=nuevo&tipo=Crear' style='text-decoration: none; color: inherit;'>
                                    Crear
                                </a>
                            </button>

@@ -13,7 +13,7 @@
     <title>Home</title>
 </head>
 <body class="w3-light-grey">
-<h2>Pagina creacion y edicion que no se ve</h2>
+<h2>Título</h2>
 
 
 <form action="index.php?controller=PaginaDeCreacion&method=editarpokemon" method="post" enctype="multipart/form-data" class="w3-margin">
@@ -21,10 +21,8 @@
     <label for="fotoPokemon">Foto:</label>
     <input type="file" name="fotoPokemon" id="fotoPokemon" value="img/pokemon/{{imagen}}"><br><br>
 
-    <label> {{id}} </label>
-    <!-- Si hay una imagen, muestra la etiqueta de imagen -->
     {{#imagen}}
-    <img src="img/pokemon/{{imagen}}" alt="Imagen del Pokémon" id="imagenForm"><br>
+    <img src="img/pokemon/{{imagen}}" alt="Imagen del Pokémon" id="imagenForm" style='height : 8rem'><br>
     {{/imagen}}
 
     <label for="nombre">Nombre del pokémon:</label>
