@@ -14,6 +14,15 @@ class PaginaDeVisualizacionController
     public function get($id)
     {
         $pokemonData = $this->model->buscarPokemonId($id);
+
+        foreach ($pokemonData as &$pokemon) {
+            if (isset($pokemon['tipos'])) {
+                $pokemon['tipos'] = explode(', ', $pokemon['tipos']);
+            } else {
+                $pokemon['tipos'] = [];
+            }
+        }
+        
         $this->presenter->render("view/PaginaDeVisualizacionView.mustache",["pokemonData"=>$pokemonData]);
     }
 

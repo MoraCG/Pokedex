@@ -1,6 +1,4 @@
-
-
-                      <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -55,10 +53,10 @@
             <tbody>
                 {{#pokemonData}}
                 <tr>
-                    <td><img src='img/pokemon/{{imagen}}' alt='imagen' class='imagenTabla' style='width: 64px; height: auto;'></td>
+                    <td><img src='/img/pokemon/{{imagen}}' alt='imagen' class='imagenTabla' style='width: 64px; height: auto;'></td>
                     <td>
-                        {{#tipos}}
-                        <img src='../img/TipoPokemon/tipo_{{tipo}}.png' alt='{{tipo}}'>
+                         {{#tipos}}
+                        <img src='/img/TipoPokemon/tipo_{{.}}.png' alt='{{.}}'>
                         {{/tipos}}
                     </td>
                     <td>{{numero}}</td>

@@ -24,35 +24,33 @@ class PokemonModel
     }
 
     public function searchPokemon($searchTerm = "")
-    {
-        $sql = "SELECT pokemon.*
-        FROM pokemon 
-        LEFT JOIN pokemon_tipo ON pokemon.id = pokemon_tipo.pokemon_id 
-        LEFT JOIN tipo ON pokemon_tipo.tipo_id = tipo.id";
+{
+    $sql = "SELECT pokemon.*, GROUP_CONCAT(tipo.nombre SEPARATOR ', ') AS tipos
+            FROM pokemon 
+            LEFT JOIN pokemon_tipo ON pokemon.id = pokemon_tipo.pokemon_id 
+            LEFT JOIN tipo ON pokemon_tipo.tipo_id = tipo.id";
 
-        if ($searchTerm !== null) {
-            $sql .= " WHERE pokemon.nombre LIKE '%{$searchTerm}%'";
-        }
-
-        $sql .= " GROUP BY pokemon.id";
-
-        return $this->database->query($sql);
-
-
+    if ($searchTerm !== null && $searchTerm !== "") {
+        $sql .= " WHERE pokemon.nombre LIKE '%{$searchTerm}%'";
     }
 
+    $sql .= " GROUP BY pokemon.id";
 
-    public function buscarPokemonId($id)
-    {
-        $sql = "SELECT pokemon.*, tipo.nombre AS tipo_nombre 
+    return $this->database->query($sql);
+}
+
+
+public function buscarPokemonId($id)
+{
+    $sql = "SELECT pokemon.*, GROUP_CONCAT(tipo.nombre SEPARATOR ', ') AS tipos 
             FROM pokemon 
             LEFT JOIN pokemon_tipo ON pokemon.id = pokemon_tipo.pokemon_id 
             LEFT JOIN tipo ON pokemon_tipo.tipo_id = tipo.id 
             WHERE pokemon.id = {$id}
             GROUP BY pokemon.id";
 
-        return $this->database->query($sql);
-    }
+    return $this->database->query($sql);
+}
 
     public function obtenerIdTipo($tipo) {
 
@@ -97,6 +95,10 @@ class PokemonModel
          $this->database->execute($sql);
 
     }
-
+public function obtenerTiposDisponibles()
+    {
+        $sql = "SELECT nombre FROM tipo";
+        return $this->database->query($sql);
+    }
 
 }
