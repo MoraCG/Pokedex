@@ -3,6 +3,7 @@
 include_once ("Controller/PaginaDeVisualizacionController.php");
 include_once ("Controller/PokedexController.php");
 include_once ("Controller/PaginaDeCreacionController.php");
+include_once ("LoginController.php");
 
 include_once ("Model/PokemonModel.php");
 include_once ("Helper/Router.php");
@@ -29,6 +30,10 @@ class Configuration
         return new PaginaDeCreacionController( self::getPokemonModel(),self::getPresenter());
     }
 
+    public static function GetLoginController()
+    {
+        return new LoginController( self::getPokemonModel(),self::getPresenter());
+    }
 
     //model
     private static function getPokemonModel()
