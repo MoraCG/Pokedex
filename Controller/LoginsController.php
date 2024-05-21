@@ -16,7 +16,7 @@ class LoginsController
         public
         function get()
         {
-
+            unset($_SESSION["error_login"]);
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["usuario"]) && isset($_POST["password"])) {
                 $usuario = $_POST["usuario"];
@@ -27,12 +27,26 @@ class LoginsController
                     $_SESSION["usuario"] = $usuario;
                 }
             }
+            else {
+
+                $_SESSION["error_login"] = "Usuario o contraseña incorrectos y presta atencion mora";
+            }
 
 
-            $usuario = $_SESSION['usuario'] ?? null;
 
             header("Location: index.php?controller=Pokedex&action=get");
+
+
+
         }
+
+
+
+
+
+
+
+
     public function logout() {
 
 
