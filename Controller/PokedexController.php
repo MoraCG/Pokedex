@@ -13,7 +13,7 @@ class PokedexController
     public function get()
     {
         $usuario = $_SESSION['usuario'] ?? null;
-
+        $error = $_SESSION["error_login"] ?? null;
 
         if (isset($_GET['eliminar'])) {
             $id_a_eliminar = $_GET['eliminar'];
@@ -31,22 +31,22 @@ class PokedexController
             }
         }
 
-        if ($usuario == null) {
 
 
-          $this->presenter->render("view/paginaPrincipalView.mustache", ["pokemonData" => $pokemonData]);
-    }
-    else{
+         // $this->presenter->render("view/paginaPrincipalView.mustache", ["pokemonData" => $pokemonData]);
 
         $templateData = [
             "pokemonData" => $pokemonData,
-            "usuario" => $usuario
+            "usuario" => $usuario,
+            "error" => $error // Pasar el mensaje de error a la plantilla
         ];
 
         $this->presenter->render("view/paginaPrincipalView.mustache", $templateData);
 
 
+
+
     }
 
-}
+
 }
