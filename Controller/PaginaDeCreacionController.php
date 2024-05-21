@@ -17,7 +17,18 @@ class PaginaDeCreacionController
     {
         if ($id === 'nuevo') {
 
-            $this->presenter->render("view/PaginaCreacionView.mustache");
+            $pokemonData = [
+                [
+                    "imagen" => "",
+                    "nombre" => "",
+                    "numero" => null,
+                    "descripcion" => ""
+                ]
+            ];
+
+
+
+            $this->presenter->render("view/PaginaEdicionView.mustache",["pokemonData"=>$pokemonData]);
         } else {
             $this->editar($id);
         }
