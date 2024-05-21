@@ -24,35 +24,36 @@ class PokemonModel
     }
 
     public function searchPokemon($searchTerm = "")
-{
-    $sql = "SELECT pokemon.*, GROUP_CONCAT(tipo.nombre SEPARATOR ', ') AS tipos
+    {
+        $sql = "SELECT pokemon.*, GROUP_CONCAT(tipo.nombre SEPARATOR ', ') AS tipos
             FROM pokemon 
             LEFT JOIN pokemon_tipo ON pokemon.id = pokemon_tipo.pokemon_id 
             LEFT JOIN tipo ON pokemon_tipo.tipo_id = tipo.id";
 
-    if ($searchTerm !== null && $searchTerm !== "") {
-        $sql .= " WHERE pokemon.nombre LIKE '%{$searchTerm}%'";
+        if ($searchTerm !== null && $searchTerm !== "") {
+            $sql .= " WHERE pokemon.nombre LIKE '%{$searchTerm}%'";
+        }
+
+        $sql .= " GROUP BY pokemon.id";
+
+        return $this->database->query($sql);
     }
 
-    $sql .= " GROUP BY pokemon.id";
 
-    return $this->database->query($sql);
-}
-
-
-public function buscarPokemonId($id)
-{
-    $sql = "SELECT pokemon.*, GROUP_CONCAT(tipo.nombre SEPARATOR ', ') AS tipos 
+    public function buscarPokemonId($id)
+    {
+        $sql = "SELECT pokemon.*, GROUP_CONCAT(tipo.nombre SEPARATOR ', ') AS tipos 
             FROM pokemon 
             LEFT JOIN pokemon_tipo ON pokemon.id = pokemon_tipo.pokemon_id 
             LEFT JOIN tipo ON pokemon_tipo.tipo_id = tipo.id 
             WHERE pokemon.id = {$id}
             GROUP BY pokemon.id";
 
-    return $this->database->query($sql);
-}
+        return $this->database->query($sql);
+    }
 
-    public function obtenerIdTipo($tipo) {
+    public function obtenerIdTipo($tipo)
+    {
 
         $sql = "SELECT id FROM tipo WHERE nombre = ?";
         $stmt = $this->database->prepare($sql);
@@ -65,7 +66,8 @@ public function buscarPokemonId($id)
         return $row ? $row['id'] : null; // Devuelve el ID del tipo o null si no se encuentra
     }
 
-    public function insertarPokemon($imagen, $nombre, $numero, $descripcion) {
+    public function insertarPokemon($imagen, $nombre, $numero, $descripcion)
+    {
         $sql = "INSERT INTO pokemon (imagen, nombre, numero, descripcion)
                 VALUES ('$imagen', '$nombre', $numero, '$descripcion')";
 
@@ -76,7 +78,8 @@ public function buscarPokemonId($id)
     }
 
 
-    public function insertarTipoPokemon($pokemon_id, $tipo_id) {
+    public function insertarTipoPokemon($pokemon_id, $tipo_id)
+    {
         $pokemon_id = intval($pokemon_id); // Asegurarse de que $pokemon_id sea un entero
         $tipo_id = intval($tipo_id); // Asegurarse de que $tipo_id sea un entero
 
@@ -87,18 +90,28 @@ public function buscarPokemonId($id)
         $this->database->execute($sql);
     }
 
-    public function eliminarPokemon($id_a_eliminar) {
+    public function eliminarPokemon($id_a_eliminar)
+    {
 
-         $sql = "DELETE FROM pokemon_tipo WHERE pokemon_id = '$id_a_eliminar'";
-         $this->database->execute($sql);
-         $sql = " DELETE FROM pokemon WHERE id = '$id_a_eliminar';";
-         $this->database->execute($sql);
+        $sql = "DELETE FROM pokemon_tipo WHERE pokemon_id = '$id_a_eliminar'";
+        $this->database->execute($sql);
+        $sql = " DELETE FROM pokemon WHERE id = '$id_a_eliminar';";
+        $this->database->execute($sql);
 
     }
-public function obtenerTiposDisponibles()
+    public function obtenerTiposDisponibles()
     {
         $sql = "SELECT nombre FROM tipo";
         return $this->database->query($sql);
     }
 
+    function LogInconsulta($usuario, $password) {
+    
+        // Consulta para verificar usuario y contraseña
+        $sql = "SELECT * FROM login WHERE usuario = '$usuario' AND password = '$password'";
+        $result =  $this->database->query($sql);
+    
+        // Si se encuentra un resultado, es válido
+        return $result->num_rows == 1;
+    }
 }

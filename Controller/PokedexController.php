@@ -30,4 +30,5 @@ class PokedexController
 
         $this->presenter->render("view/paginaPrincipalView.mustache", ["pokemonData" => $pokemonData]);
     }
+
 }

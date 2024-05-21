@@ -20,7 +20,7 @@
             </form>
             {{/usuario}}
             {{^usuario}}
-            <form action="login.php" method="post" id="userForm">
+            <form action="/Controller/LoginController.php" method="post" id="userForm">
                 Usuario: <input type="text" name="usuario" id="usuario">
                 Password: <input type="password" name="password" id="password"><br><br>
                 <input type="submit" value="Log in">
@@ -47,7 +47,9 @@
                     <th>Tipo</th>
                     <th>Número</th>
                     <th>Nombre</th>
+                    {{#usuario}}
                     <th>Modificaciones</th>
+                    {{/usuario}}
                 </tr>
             </thead>
             <tbody>
@@ -61,11 +63,13 @@
                     </td>
                     <td>{{numero}}</td>
                     <td><a href='index.php?controller=PaginaDeVisualizacion&action=ver&id={{id}}'>{{nombre}}</a></td>
+                    {{#usuario}}
                     <td class='btn-group'>
                         <a href='index.php?controller=PaginaDePrincipal&eliminar={{id}}' class='btn btn-danger' style='text-decoration: none; color: inherit;'>Eliminar</a>
                         <a href='index.php?controller=PaginaDeCreacion&id={{id}}' class='btn' style='text-decoration: none; color: inherit;'>Editar</a>
                         <input type='hidden' name='id' value='{{id}}'>
                     </td>
+                    {{/usuario}}
                 </tr>
                 {{/pokemonData}}
             </tbody>
@@ -79,7 +83,8 @@
         {{/errorMessages}}
     </div>
     {{/error}}
-
+    {{#usuario}}
     <a href='index.php?controller=PaginaDeCreacion&id=nuevo' class='w3-button w3-center' id="crearPokemon">Crear</a>
+    {{/usuario}}
 </body>
 </html>
