@@ -11,8 +11,7 @@
     <title>Home</title>
 </head>
 <body class="w3-light-grey">
-    <div class="w3-container w3-center" id="contenedorHeader">
-        <div id="user">
+        <div id="user" class="w3-center">
             {{#usuario}}
             <h2>Bienvenido, {{usuario}}</h2>
             <form action="index.php?controller=LoginsController&action=logout" method="post">
@@ -27,7 +26,6 @@
             </form>
             {{/usuario}}
         </div>
-    </div>
 
     <div class="w3-container w3-margin">
         <form action="#" method="get" class="inputsBuscar">

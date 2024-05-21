@@ -32,7 +32,9 @@ textarea {
 }
 
 #user {
+    margin-left: 80%;
     width: 20%;
+    padding: 1rem;
 }
 
 #buscador {
