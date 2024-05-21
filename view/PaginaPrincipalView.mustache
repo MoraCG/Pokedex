@@ -15,12 +15,12 @@
         <div id="user">
             {{#usuario}}
             <h2>Bienvenido, {{usuario}}</h2>
-            <form action="logout.php" method="post">
+            <form action="index.php?controller=LoginsController&action=logout" method="post">
                 <input type="submit" value="Cerrar Sesión">
             </form>
             {{/usuario}}
             {{^usuario}}
-            <form action="/Controller/LoginController.php" method="post" id="userForm">
+            <form action="index.php?controller=LoginsController&action=get" method="post" id="userForm">
                 Usuario: <input type="text" name="usuario" id="usuario">
                 Password: <input type="password" name="password" id="password"><br><br>
                 <input type="submit" value="Log in">

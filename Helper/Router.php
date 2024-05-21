@@ -10,16 +10,16 @@ class Router
 
     public function route($controller ,$action)
     {
-        switch ($controller){
+        switch ($controller) {
 
             case 'PaginaDeVisualizacion':
                 $id = $_GET['id'];
-                $paginaDeVisualizacionController = Configuration::GetPaginaDeVisualizacionController();
+                $paginaDeVisualizacionController = Configuration::getPaginaDeVisualizacionController();
                 $paginaDeVisualizacionController->get($id);
                 break;
 
             case 'PaginaDeCreacion':
-                $paginaDeCreacionController = Configuration::GetPaginaDeCreacionController();
+                $paginaDeCreacionController = Configuration::getPaginaDeCreacionController();
 
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -32,9 +32,25 @@ class Router
                     $paginaDeCreacionController->get($id);
                 }
                 break;
+
+            case 'LoginsController':
+                $loginsController = Configuration::getLoginsController();
+                if ($action == "logout") {
+
+
+                    $loginsController->logout();
+
+                     }
+                else{
+                    $loginsController->get();
+                }
+        break;
+
+
+
             default:
 
-                $PokedexController=Configuration::GetPokedexController();
+                $PokedexController=Configuration::getPokedexController();
 
                 $PokedexController->get();
                 break;

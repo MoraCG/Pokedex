@@ -109,7 +109,7 @@ class PokemonModel
     
         // Consulta para verificar usuario y contraseña
         $sql = "SELECT * FROM login WHERE usuario = '$usuario' AND password = '$password'";
-        $result =  $this->database->query($sql);
+        $result =  $this->database->execute($sql);
     
         // Si se encuentra un resultado, es válido
         return $result->num_rows == 1;
