@@ -63,7 +63,7 @@
                     <td><a href='index.php?controller=PaginaDeVisualizacion&action=ver&id={{id}}'>{{nombre}}</a></td>
                     <td class='btn-group'>
                         <a href='index.php?controller=PaginaDePrincipal&eliminar={{id}}' class='btn btn-danger' style='text-decoration: none; color: inherit;'>Eliminar</a>
-                        <a href='index.php?controller=PaginaDeCreacion&id={{id}}&tipoForm=Editar' class='btn' style='text-decoration: none; color: inherit;'>Editar</a>
+                        <a href='index.php?controller=PaginaDeCreacion&id={{id}}' class='btn' style='text-decoration: none; color: inherit;'>Editar</a>
                         <input type='hidden' name='id' value='{{id}}'>
                     </td>
                 </tr>
@@ -80,6 +80,6 @@
     </div>
     {{/error}}
 
-    <a href='index.php?controller=PaginaDeCreacion&id=nuevo&tipoForm=Crear' class='w3-button w3-center' id="crearPokemon">Crear</a>
+    <a href='index.php?controller=PaginaDeCreacion&id=nuevo' class='w3-button w3-center' id="crearPokemon">Crear</a>
 </body>
 </html>

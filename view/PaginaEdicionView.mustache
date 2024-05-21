@@ -32,13 +32,13 @@
     <input type="number" id="numeroPokemon" name="numeroPokemon" value="{{numero}}"><br>
 
     <label>Tipo de pokémon</label><br>
-    {{#tipos_disponibles}}
+   {{#tipos_disponibles}}
     <label>
-        <input type="checkbox" name="tipos[]" value="{{tipo}}" {{#checked}}checked{{/checked}}>
-        {{tipo}}
+        <input type="checkbox" name="tipos[]" value="{{nombre}}">
+        {{nombre}}
     </label><br>
     {{/tipos_disponibles}}
-
+    <br>
     <label for="descripcion">Una breve descripción:</label><br>
     <textarea name="descripcion" id="descripcion" cols="20" rows="3">{{descripcion}}</textarea><br>
     {{/pokemonData}}

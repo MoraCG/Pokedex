@@ -15,8 +15,14 @@ class PaginaDeCreacionController
 
     public function get($id)
     {
-        if ($id === 'nuevo') {
+        $tiposDisponibles = $this->model->obtenerTiposDisponibles();
+        $tipos = [];
 
+        foreach ($tiposDisponibles as $tipo) {
+            $tipos[] = ["nombre" => $tipo["nombre"]];
+        }
+
+        if ($id === 'nuevo') {
             $pokemonData = [
                 [
                     "imagen" => "",
@@ -26,32 +32,25 @@ class PaginaDeCreacionController
                 ]
             ];
 
-
-
-            $this->presenter->render("view/PaginaEdicionView.mustache",["pokemonData"=>$pokemonData]);
+            $this->presenter->render("view/PaginaEdicionView.mustache", ["pokemonData" => $pokemonData, "tipos_disponibles" => $tipos]);
         } else {
-            $this->editar($id);
+            $this->editar($id, $tipos);
         }
     }
 
-    public function editar($id)
+    public function editar($id, $tipos)
     {
-
         $pokemonData = $this->model->buscarPokemonId($id);
-       // var_dump($pokemonData );
-        $this->presenter->render("view/PaginaEdicionView.mustache", ["pokemonData" => $pokemonData]);
+        $this->presenter->render("view/PaginaEdicionView.mustache", ["pokemonData" => $pokemonData, "tipos_disponibles" => $tipos]);
     }
+
 
     public function insertar()
     {
-
         $nombre = $_POST['nombre'];
         $numero = $_POST['numeroPokemon'];
         $descripcion = $_POST['descripcion'];
         $tipos = isset($_POST['tipos']) ? $_POST['tipos'] : array();
-
-
-
 
         $directorio_destino = 'img/pokemon/';
 
@@ -66,13 +65,11 @@ class PaginaDeCreacionController
             move_uploaded_file($archivo_temporal, $ruta_destino);
         }
 
-
         $pokemon_id = $this->model->insertarPokemon($archivo_nombre, $nombre, $numero, $descripcion);
         foreach ($tipos as $tipo) {
             $tipo_id = $this->model->obtenerIdTipo( $tipo);
             $this->model->insertarTipoPokemon($pokemon_id, $tipo_id);
         }
-
 
         header("Location: index.php");
         exit();
