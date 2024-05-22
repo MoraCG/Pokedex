@@ -14,7 +14,7 @@ class PokedexController
     {
         $usuario = $_SESSION['usuario'] ?? null;
         $error = $_SESSION["error_login"] ?? null;
-
+     
         if (isset($_GET['eliminar'])) {
             $id_a_eliminar = $_GET['eliminar'];
             $this->model->eliminarPokemon($id_a_eliminar);

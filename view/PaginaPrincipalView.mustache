@@ -29,6 +29,12 @@
         </div>
     </div>
 
+    {{#error}}
+    <div style='color:white;background-color:red'>
+        {{error}}
+    </div>
+    {{/error}}
+
     <div class="w3-container w3-margin">
         <form action="#" method="get" class="inputsBuscar">
             <label for="buscador" id="labelBuscador">Ingrese nombre, tipo o número de pokémon:</label>
@@ -76,11 +82,7 @@
         </table>
     </div>
 
-    {{#error}}
-    <div style='color:white;background-color:red'>
-        {{error}}
-    </div>
-    {{/error}}
+
     {{#usuario}}
     <a href='index.php?controller=PaginaDeCreacion&id=nuevo' class='w3-button w3-center' id="crearPokemon">Crear</a>
     {{/usuario}}
