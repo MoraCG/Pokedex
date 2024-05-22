@@ -13,7 +13,7 @@
     <title>Home</title>
 </head>
 <body class="w3-light-grey">
-<h2>Título</h2>
+<h2>Formulario</h2>
 
 
 <form action="index.php?controller=PaginaDeCreacion&method=editarpokemon" method="post" enctype="multipart/form-data" class="w3-margin">
@@ -34,8 +34,7 @@
     <label>Tipo de pokémon</label><br>
    {{#tipos_disponibles}}
     <label>
-        <input type="checkbox" name="tipos[]" value="{{nombre}}">
-        {{nombre}}
+        <input type="checkbox" name="tipos[]" value="{{nombre}}" >{{nombre}}
     </label><br>
     {{/tipos_disponibles}}
     <br>

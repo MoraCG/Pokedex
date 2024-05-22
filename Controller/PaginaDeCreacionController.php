@@ -63,11 +63,14 @@ class PaginaDeCreacionController
 
             $ruta_destino = $directorio_destino . $archivo_nombre;
             move_uploaded_file($archivo_temporal, $ruta_destino);
+        } else {
+            // Si no se proporciona una nueva imagen, conserva la imagen existente
+            $ruta_destino = $directorio_destino . $_FILES['fotoPokemon']['name'];
         }
 
         $pokemon_id = $this->model->insertarPokemon($archivo_nombre, $nombre, $numero, $descripcion);
         foreach ($tipos as $tipo) {
-            $tipo_id = $this->model->obtenerIdTipo( $tipo);
+            $tipo_id = $this->model->obtenerIdTipo($tipo);
             $this->model->insertarTipoPokemon($pokemon_id, $tipo_id);
         }
 
@@ -81,5 +84,6 @@ class PaginaDeCreacionController
         $id_a_eliminar = $_POST['id'];
         $this->model->eliminarPokemon($id_a_eliminar);
         $this->insertar();
+        
     }
 }

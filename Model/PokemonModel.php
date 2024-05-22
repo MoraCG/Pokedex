@@ -12,12 +12,16 @@ class PokemonModel
     public function getPokemonData()
     {
 
-
         if (isset($_GET['buscador'])) {
             $buscador = $_GET['buscador'];
-            return $this->searchPokemon($buscador);
+            $encontrado =  $this->searchPokemon($buscador);
+            if(!empty($encontrado)){
+                echo "No se encontro nada 😰";
+                return $encontrado;
+            }else{
+                return $this->searchPokemon();
+            }
         } else {
-
             return $this->searchPokemon();
         }
 
